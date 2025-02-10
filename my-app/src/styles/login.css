@@ -1,0 +1,120 @@
+/* Background Styling */
+.login-container {
+    background: #aecee6 url('../images/Element.png') no-repeat center top;
+    background-size: contain;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* Full screen height */
+}
+
+.login-title {
+    font-size: 1.8rem;
+    color: #043873;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+    /* Adds space between title and box */
+}
+
+/* Login Box */
+.login-box {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+}
+
+/* Monkey Emoji */
+.login-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* Input Fields */
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Buttons */
+.login-button,
+.home-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    background: #043873;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.login-button:hover,
+.home-button:hover {
+    background: #032b5a;
+}
+
+/* Forgot Password & Register */
+.login-options {
+    margin-top: 15px;
+}
+
+.login-options a {
+    color: #043873;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.login-options a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+/* Animated Background Circles */
+.animated-bg-circle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+    border-radius: 50%;
+    top: 20%;
+    left: 10%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.animated-bg-circle.delay {
+    top: 60%;
+    left: 70%;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}

@@ -1,0 +1,234 @@
+/* General Container Styling */
+.pending-lessons-container {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 20px;
+    background: url('../images/Element.png') no-repeat center top, linear-gradient(to bottom, #00416A, #E4E5E6);
+    color: #00416A;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+
+/* Decorative Circles */
+.pending-lessons-container::before,
+.pending-lessons-container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+.pending-lessons-container::before {
+    width: 150px;
+    height: 150px;
+    background: #E4E5E6;
+    top: 20px;
+    left: 20px;
+}
+
+.pending-lessons-container::after {
+    width: 200px;
+    height: 200px;
+    background: #00416A;
+    bottom: 20px;
+    right: 20px;
+}
+
+/* Title Styling */
+.pending-lessons-container h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Search Input Styling */
+.search-input {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    padding: 14px;
+    border: 2px solid #00416A;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: block;
+}
+
+/* Table Styling */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.pending-lessons-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f9f9f9;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.pending-lessons-table th,
+.pending-lessons-table td {
+    text-align: center;
+    padding: 14px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.pending-lessons-table th {
+    background-color: #00416A;
+    color: white;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.pending-lessons-table td input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Button Styling */
+.action-button {
+    padding: 10px 14px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.action-button:hover {
+    transform: scale(1.05);
+}
+
+.save-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.cancel-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.edit-button {
+    background-color: #2196F3;
+    color: white;
+}
+
+.delete-button {
+    background-color: #E91E63;
+    color: white;
+}
+
+/* Pagination Styling */
+.pagination {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination button {
+    margin: 5px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.pagination button.active,
+.pagination button:hover {
+    background-color: #00416A;
+    color: white;
+    font-weight: bold;
+    transform: scale(1.1);
+}
+
+/* Back Button Styling */
+.back-to-home-button {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 24px;
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.back-to-home-button:hover {
+    background-color: #E64A19;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pending-lessons-container {
+        padding: 20px;
+    }
+
+    .pending-lessons-table th,
+    .pending-lessons-table td {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    .search-input {
+        font-size: 1rem;
+    }
+}
+
+
+/* Styled Dropdown */
+.select-dropdown {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #00416A;
+    border-radius: 8px;
+    background-color: white;
+    color: #00416A;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.select-dropdown:hover {
+    border-color: #007bff;
+}
+
+/* Focus Effect */
+.select-dropdown:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Style the dropdown arrow */
+.select-dropdown::-ms-expand {
+    display: none;
+}
+
+.select-dropdown::after {
+    content: "▼";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #00416A;
+}

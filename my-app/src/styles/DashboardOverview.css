@@ -1,0 +1,144 @@
+/* Container Styling */
+.dashboard-container {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 20px;
+    background: url('../images/Element.png') no-repeat center top, linear-gradient(to bottom, #00416A, #E4E5E6);
+    background-size: cover;
+    background-attachment: fixed;
+    color: #00416A;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styling */
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Filter Section */
+.filter-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-section label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #00416A;
+}
+
+.filter-section select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    text-align: center;
+    direction: rtl;
+}
+
+/* Stats Section */
+.stats-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 180px;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    font-size: 1.2rem;
+    color: #00416A;
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    font-size: 1.8rem;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Charts Section */
+.charts-section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.chart-container {
+    width: 40%;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.chart-container:hover {
+    transform: translateY(-5px);
+}
+
+.chart-container h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #00416A;
+    margin-bottom: 15px;
+}
+
+/* Back Button */
+.back-to-home-button {
+    display: block;
+    width: fit-content;
+    margin: 20px auto 0 auto;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-home-button:hover {
+    background-color: #218838;
+}
+
+/* Adjust Chart Sizes */
+.chart-container canvas {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 200px;
+}

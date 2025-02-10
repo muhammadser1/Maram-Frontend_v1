@@ -1,0 +1,133 @@
+/* Admin Dashboard CSS */
+
+.admin-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background-size: cover;
+}
+
+.admin-dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #7BCBD4;
+    padding: 15px 30px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.institute-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.school-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.admin-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.logout-button {
+    background-color: #ff4b5c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #e43f50;
+}
+
+.admin-dashboard-body {
+    display: flex;
+    height: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #ffffffdc;
+    padding: 20px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background-color: #c2f9ff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.sidebar-button:hover {
+    background-color: #e0e0e0;
+}
+
+.button-icon {
+    font-size: 1.5rem;
+    color: #7BCBD4;
+}
+
+.button-title {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.admin-dashboard-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    /* background-color: rgba(252, 192, 192, 0.8); */
+    background-color: #d8fbff;
+}
+
+.profile-section {
+    background: url('../images/images-removebg-preview.png') no-repeat center center fixed;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.profile-section h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #00416A;
+}
+
+.centered-profile {
+    font-size: 1.2rem;
+    line-height: 2;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.centered-profile p {
+    margin: 5px 0;
+}

@@ -1,0 +1,450 @@
+/* General header styling */
+.homepage-header {
+    background-color: #043873;
+    padding: 16px 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container for header content */
+.homepage-header-container {
+    width: 100%;
+    max-width: 1920px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo styling */
+.homepage-logo {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* Navigation links styling */
+.homepage-nav {
+    display: flex;
+    gap: 32px;
+}
+
+.homepage-nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 19px;
+}
+
+.homepage-nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Actions (Login and Get Started buttons) */
+.homepage-actions {
+    display: flex;
+    gap: 16px;
+}
+
+.homepage-login,
+.homepage-get-started {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.homepage-login {
+    background-color: #FFE492;
+    color: #043873;
+}
+
+.homepage-get-started {
+    background-color: #4F9CF9;
+    color: #e2f3ff;
+    font-weight: bold;
+}
+
+.homepage-get-started:hover {
+    background-color: rgb(5, 122, 255);
+}
+
+.homepage-login:hover {
+    background-color: #ffcb30;
+}
+
+/* Yellow Line Between Header and Hero Section */
+.homepage-yellow-line {
+    background-color: #FFE492;
+    height: 4px;
+    width: 100%;
+}
+
+/* Hero Section Styling */
+.homepage-hero {
+    background-color: #043873;
+    color: #e2f3ff;
+    padding: 60px 220px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Adding Background Image */
+.homepage-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/Element.png') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.homepage-hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1920px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Text content in hero section */
+.homepage-hero-text {
+    max-width: 50%;
+}
+
+.homepage-hero-title {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.homepage-hero-description {
+    font-size: 18px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.homepage-hero-button {
+    background-color: #4F9CF9;
+    color: #e2f3ff;
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.homepage-hero-button:hover {
+    background-color: #3A89D6;
+}
+
+/* Image styling */
+.homepage-hero-image img {
+    max-width: 600px;
+    width: 100%;
+    border-radius: 8px;
+    position: relative;
+    left: -150px;
+    /* Moves the image 40px to the left */
+}
+
+
+
+
+
+
+/* Collaboration Section Styling */
+.homepage-collaboration {
+    background-color: #e2f3ff;
+    /* Light blue background */
+    padding: 60px 220px;
+    display: flex;
+    justify-content: center;
+}
+
+.homepage-collaboration-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1920px;
+    width: 100%;
+}
+
+/* Image Styling */
+.homepage-collaboration-image img {
+    max-width: 500px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Text Content Styling */
+.homepage-collaboration-content {
+    max-width: 50%;
+    text-align: right;
+    /* For RTL alignment */
+}
+
+.homepage-collaboration-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #043873;
+}
+
+.homepage-collaboration-description {
+    font-size: 18px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: #043873;
+}
+
+/* Buttons Styling */
+.homepage-collaboration-buttons button {
+    background-color: #4F9CF9;
+    color: #e2f3ff;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px 0;
+    width: 200px;
+    /* Consistent button size */
+
+}
+
+.homepage-collaboration-buttons button:hover {
+    background-color: #3A89D6;
+
+}
+
+.homepage-collaboration-buttons {
+    display: flex;
+    flex-direction: row;
+    /* Stack buttons vertically */
+    gap: 15px;
+    /* Add space between buttons */
+}
+
+/* Policies Section Styling */
+.homepage-policies {
+    background-color: #043873;
+    /* Blue background */
+    color: #e2f3ff;
+    padding: 60px 220px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /* Required for background layering */
+    overflow: hidden;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.homepage-policies::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/Element.png') no-repeat center center;
+    background-size: cover;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+/* Ensuring content is above the curve */
+.homepage-policies-container {
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Title Styling */
+.homepage-policies-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #FFE492;
+    border-bottom: 3px solid #4F9CF9;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* List Styling */
+.homepage-policies-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.homepage-policies-list li {
+    font-size: 24px;
+    /* Increase font size */
+    padding: 18px 40px;
+    /* More padding for larger size */
+    background-color: #4F9CF9;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    /* Enhanced shadow for emphasis */
+    width: 100%;
+    max-width: 500px;
+    /* Wider items */
+    text-align: center;
+    position: relative;
+    color: #e2f3ff;
+}
+
+
+/* Alternating Colors for List Items */
+.homepage-policies-list li:nth-child(odd) {
+    background-color: #4F9CF9;
+}
+
+.homepage-policies-list li:nth-child(even) {
+    background-color: #e2f3ff;
+    color: #043873;
+}
+
+/* Hover Effect */
+.homepage-policies-list li:hover {
+    background-color: #3A89D6;
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.birthday-section {
+    background: #e2f3ff url('./images/BACKGROUND.png') no-repeat center center;
+    background-size: cover;
+    background-size: 40%;
+    /* Shrinks the background image to 50% of its original size */
+
+    /* Ensures the image covers the entire section */
+    padding: 4rem 2rem;
+    text-align: center;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers everything */
+    justify-content: center;
+    position: relative;
+    /* Helps with layering */
+}
+
+
+/* Container for all images */
+.birthday-images-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    /* Space between images */
+    margin-top: 2rem;
+    width: 100%;
+}
+
+/* Left balloon image */
+.birthday-left-image {
+    width: 100px;
+    opacity: 0.9;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Center balloon image */
+.birthday-background {
+    width: 60%;
+    max-width: 400px;
+    opacity: 0.9;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Right balloon image */
+.birthday-right-image {
+    width: 100px;
+    opacity: 0.9;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+.birthday-section {
+    margin-bottom: 0;
+    /* Remove extra spacing below */
+}
+
+.site-footer {
+    background: #043873;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 0;
+    /* Prevent extra space */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.site-footer a {
+    color: #FFD700;
+    /* Gold color for contrast */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.site-footer a:hover {
+    color: #FFA500;
+    /* Orange on hover */
+    text-decoration: underline;
+}
+
+.site-footer p {
+    margin-bottom: 10px;
+    /* Adds space below each paragraph */
+}
+
+.site-footer .social-links {
+    margin-top: 15px;
+    /* Adds space above social links */
+}
+
+.site-footer a {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    /* Ensures spacing works */
+    margin: 5px 0;
+    /* Space around links */
+}

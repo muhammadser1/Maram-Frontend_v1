@@ -1,0 +1,178 @@
+.teacher-dashboard-container {
+    background-size: cover, contain;
+    /* Adjust 'cover' and 'contain' as needed */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: url('../images/Element.png') no-repeat center top, linear-gradient(to bottom, #00416A, #E4E5E6);
+
+}
+
+
+/* Header Styling */
+.teacher-dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+
+}
+
+.teacher-dashboard-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.logout-button {
+    background: linear-gradient(45deg, #ff4b5c, #ff6f61);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+
+}
+
+.logout-button:hover {
+    background: linear-gradient(45deg, #e43f50, #ff4b5c);
+    transform: translateY(-4px);
+}
+
+/* Grid Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 450px 1fr;
+    /* Increase middle column width */
+    gap: 50px;
+    /* Reduce the gap slightly for better alignment */
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.grid-column {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    /* Increase gap between buttons for better spacing */
+    align-items: center;
+    /* Center align buttons */
+}
+
+/* Make the image larger */
+.grid-image img.expanded-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    /* Slightly reduce max height */
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.grid-image img.expanded-image:hover {
+    transform: scale(1.05);
+    /* Subtle zoom on hover */
+}
+
+/* Dashboard Card Styling */
+.dashboard-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    pointer-events: all;
+
+}
+
+
+/* Make the buttons smaller */
+.smaller-card {
+    padding: 15px;
+    width: 220px;
+}
+
+.smaller-card .card-icon {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+.smaller-card .card-title {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Animated Background Circles */
+.animated-bg-circle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent);
+    border-radius: 50%;
+    top: 20%;
+    left: 10%;
+    animation: float 6s ease-in-out infinite;
+    z-index: 1;
+}
+
+.animated-bg-circle.delay {
+    top: 60%;
+    left: 70%;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-image img {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .teacher-dashboard-title {
+        font-size: 2rem;
+    }
+
+    .logout-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .teacher-dashboard-main {
+        padding: 20px;
+    }
+}

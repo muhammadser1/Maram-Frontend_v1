@@ -1,0 +1,87 @@
+/* Background Styling */
+.signup-container {
+    background: #aecee6 url('../images/Element.png') no-repeat center top;
+    background-size: contain;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Motivational Title */
+.signup-title {
+    font-size: 1.8rem;
+    color: #043873;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+    /* Adds space between title and box */
+}
+
+/* Signup Box */
+.signup-box {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+}
+
+/* Monkey Emoji */
+.signup-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* Input Fields */
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Buttons */
+.signup-button,
+.home-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    background: #043873;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.signup-icon,
+.login-icon {
+    font-size: 4rem;
+    /* Increase from 2.5rem to 4rem */
+    margin-bottom: 15px;
+}
+
+.signup-button:hover,
+.home-button:hover {
+    background: #032b5a;
+}
+
+/* Login Redirect */
+.signup-options {
+    margin-top: 15px;
+}
+
+.signup-options a {
+    color: #043873;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.signup-options a:hover {
+    text-decoration: underline;
+}

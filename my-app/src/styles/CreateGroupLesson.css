@@ -1,0 +1,143 @@
+/* Container Styling */
+.create-lesson-container {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 20px;
+    background: url('../images/Element.png') no-repeat center top, linear-gradient(to bottom, #00416A, #E4E5E6);
+    background-size: cover;
+    background-attachment: fixed;
+    color: #00416A;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styling */
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Form Styling */
+.lesson-form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #00416A;
+}
+
+.lesson-form input[type="text"],
+.lesson-form input[type="number"],
+.lesson-form input[type="date"],
+.lesson-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    text-align: center;
+    /* Center the text inside input fields */
+    direction: rtl;
+    /* Align Arabic text to the end */
+}
+
+.lesson-form input:focus,
+.lesson-form select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Student Fields */
+.student-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.student-field input {
+    flex: 1;
+}
+
+.add-student-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+    /* Added space below the add student button */
+}
+
+.add-student-button:hover {
+    background-color: #0056b3;
+}
+
+.remove-student-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-student-button:hover {
+    background-color: #c82333;
+}
+
+/* Submit Button */
+.submit-button {
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #218838;
+}
+
+/* Back Button */
+.back-to-home-button {
+    display: block;
+    width: fit-content;
+    margin: 20px auto 0 auto;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-home-button:hover {
+    background-color: #218838;
+}

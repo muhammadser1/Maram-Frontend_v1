@@ -1,0 +1,119 @@
+/* Container Styling */
+.approved-lessons-container {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 20px;
+    background: url('../images/Element.png') no-repeat center top, linear-gradient(to bottom, #00416A, #E4E5E6);
+    background-size: cover;
+    background-attachment: fixed;
+    color: #00416A;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styling */
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Search Input */
+.search-input {
+    display: block;
+    width: 50%;
+    margin: 0 auto 20px auto;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: border 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Table Wrapper */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* Table Styling */
+.approved-lessons-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.approved-lessons-table th,
+.approved-lessons-table td {
+    text-align: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.approved-lessons-table th {
+    background-color: #007bff;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.approved-lessons-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Multi-line Student Names */
+.student-names {
+    text-align: left;
+    word-wrap: break-word;
+    max-width: 200px;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.pagination button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button.active,
+.pagination button:hover {
+    background-color: #0056b3;
+}
+
+/* Back Button */
+.back-to-home-button {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-home-button:hover {
+    background-color: #218838;
+}

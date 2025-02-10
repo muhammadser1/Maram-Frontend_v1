@@ -1,0 +1,136 @@
+/* Reusing homepage background */
+.homepage-container {
+    background: #aecee6 url('../images/Element.png') no-repeat center top;
+    background-size: contain;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* About Content */
+.about-content {
+    background: rgba(255, 255, 255, 0.9);
+    /* Light overlay for better readability */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 90%;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+/* Title Styling */
+.about-title {
+    font-size: 2rem;
+    color: #043873;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Sections Styling */
+.about-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+    background: #f7f7f7;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.about-section:hover {
+    transform: scale(1.05);
+    background: #e0f3ff;
+}
+
+/* Icons */
+.about-icon {
+    font-size: 2.5rem;
+    color: #043873;
+    animation: bounce 1s infinite alternate;
+}
+
+/* Text */
+.about-text {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 500;
+    text-align: right;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-5px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-content {
+        padding: 20px;
+    }
+
+    .about-title {
+        font-size: 1.8rem;
+    }
+
+    .about-text {
+        font-size: 1rem;
+    }
+
+    .about-icon {
+        font-size: 2rem;
+    }
+}
+
+.about-text {
+    direction: rtl;
+    text-align: right;
+}
+
+.back-home-button {
+    background-color: #043873;
+    color: white;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: fit-content;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.back-home-button:hover {
+    background-color: #032b5a;
+    transform: scale(1.05);
+}

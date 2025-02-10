@@ -1,0 +1,178 @@
+/* Container Styling */
+.create-lesson-container {
+    background: url('../images/Element.png') no-repeat center top, linear-gradient(to bottom, #00416A, #E4E5E6);
+    background-size: contain;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Title Styling */
+.create-lesson-title {
+    font-size: 2rem;
+    color: #00416A;
+    margin-bottom: 20px;
+}
+
+/* Success & Error Messages */
+.success-message {
+    color: green;
+    margin-bottom: 15px;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 15px;
+}
+
+/* Form Styling */
+.create-lesson-form {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.create-lesson-form input,
+.create-lesson-form select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.create-lesson-form input::placeholder {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Label Styling */
+.label {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    color: #00416A;
+    width: 100%;
+    text-align: center;
+}
+
+/* Submit Button Styling */
+.submit-button {
+    background: #00416A;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-button:hover {
+    background: #032b5a;
+}
+
+/* Dashboard Card Styling */
+.dashboard-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-card:active {
+    transform: scale(0.98);
+}
+
+.card-icon {
+    font-size: 2rem;
+    color: #00416A;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    color: #00416A;
+    text-align: center;
+}
+
+/* Make the entire card clickable */
+.dashboard-card {
+    pointer-events: all;
+}
+
+.dashboard-card[title="إرسال درس فردي جديد"] {
+    cursor: pointer;
+}
+
+/* Navigation Button Styling */
+.back-button {
+    background: #00416A;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+}
+
+.back-button:hover {
+    background: #032b5a;
+}
+
+/* Align text inside input to center */
+.create-lesson-form input::placeholder,
+.create-lesson-form select::placeholder {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Education Level Dropdown Styling */
+.create-lesson-form select {
+    background-color: white;
+    cursor: pointer;
+}
+
+.create-lesson-form select:focus {
+    outline: none;
+    border-color: #00416A;
+}
+
+.create-lesson-form select option {
+    text-align: center;
+}
+
+/* Centering Labels */
+.create-lesson-form label {
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 5px;
+    color: #00416A;
+    font-size: 1.1rem;
+}
