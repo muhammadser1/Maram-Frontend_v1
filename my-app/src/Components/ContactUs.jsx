@@ -40,7 +40,7 @@ const ContactUs = () => {
                     </p>                </div>
 
                 {/* Centered Back Button */}
-                <button className="back-home-button" onClick={() => navigate('/homepage')}>
+                <button className="back-home-button" onClick={() => navigate('/')}>
                     العودة إلى الصفحة الرئيسية
                 </button>
             </div>

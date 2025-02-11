@@ -15,7 +15,7 @@ export default function VerifyEmail() {
             if (verified) return;  // Prevent multiple API calls if already verified
 
             try {
-                const apiUrl = `http://localhost:8000/user/verify-email?token=${token}`;
+                const apiUrl = `https://maram-classmanager-backend.onrender.com/user/verify-email?token=${token}`;
                 console.log('Requesting verification from:', apiUrl);
 
                 const response = await axios.get(apiUrl);

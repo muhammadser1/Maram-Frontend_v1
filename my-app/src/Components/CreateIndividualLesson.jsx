@@ -80,7 +80,7 @@ export default function CreateIndividualLesson() {
             console.log('🔑 Using Token as Query Parameter:', token); // ✅ Log token placement
 
             // ✅ Send token as a query parameter instead of in headers
-            const response = await axios.post(`http://localhost:8000/teacher/submit?token=${token}`, formattedData, {
+            const response = await axios.post(`https://maram-classmanager-backend.onrender.com/teacher/submit?token=${token}`, formattedData, {
                 headers: {
                     "Content-Type": "application/json"
                 }

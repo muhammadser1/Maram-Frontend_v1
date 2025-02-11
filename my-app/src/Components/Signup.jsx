@@ -27,7 +27,7 @@ const Signup = () => {
         };
 
         try {
-            const response = await fetch("http://localhost:8000/user/signup", {
+            const response = await fetch("https://maram-classmanager-backend.onrender.com/user/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -123,7 +123,7 @@ const Signup = () => {
                     <div className="signup-options">
                         <a href="#" onClick={() => navigate("/login")}>Already have an account? Login</a>
                     </div>
-                    <button className="home-button" onClick={() => navigate("/homepage")}>Back to Home</button>
+                    <button className="home-button" onClick={() => navigate("/")}>Back to Home</button>
                 </form>
             </div>
         </div>

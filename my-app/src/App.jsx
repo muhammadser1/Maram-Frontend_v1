@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
@@ -24,12 +24,11 @@ import PendingIndividualLessonsAdmin from "./Components/PendingIndividualLessons
 import PendingGroupLessonsAdmin from "./Components/PendingGroupLessonsAdmin";
 import ApprovedGroupLessonsAdmin from "./Components/ApprovedGroupLessonsAdmin";
 import SystemOverview from "./Components/SystemOverview";
-
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/homepage" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutInstitute />} />
         <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/ForgetPassword" element={<ForgetPassword />} />

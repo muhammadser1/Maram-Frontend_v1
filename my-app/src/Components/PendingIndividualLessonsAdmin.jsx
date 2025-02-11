@@ -60,8 +60,8 @@ const PendingIndividualLessonsAdmin = () => {
 
     const fetchPendingLessons = async (token) => {
         try {
-            console.log(`🔍 Fetching: http://localhost:8000/admin/pending-individual-lessons?token=${token}`);
-            const response = await axios.get(`http://localhost:8000/admin/pending-individual-lessons?token=${token}`);
+            console.log(`🔍 Fetching: https://maram-classmanager-backend.onrender.com/admin/pending-individual-lessons?token=${token}`);
+            const response = await axios.get(`https://maram-classmanager-backend.onrender.com/admin/pending-individual-lessons?token=${token}`);
             console.log("✅ Response:", response.data);
             setLessons(response.data.pending_lessons);
         } catch (error) {

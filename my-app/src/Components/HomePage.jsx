@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import '../styles/homepage.css';
+import { CheckCircle } from "lucide-react";
 
 const Homepage = () => {
     const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Homepage = () => {
     useEffect(() => {
         const fetchBirthdays = async () => {
             try {
-                const response = await fetch("http://localhost:8000/teacher/teachers-birthdays");
+                const response = await fetch("https://maram-classmanager-backend.onrender.com/teacher/teachers-birthdays");
                 const data = await response.json();
 
                 if (!response.ok) {
@@ -98,14 +99,16 @@ const Homepage = () => {
             <div className="homepage-yellow-line"></div>
             <section className="homepage-policies">
                 <div className="homepage-policies-container">
-                    <h2 className="homepage-policies-title">قوانين الصف</h2>
+                    <h2 className="homepage-policies-title">قوانين المعهد</h2>
                     <ul className="homepage-policies-list">
-                        <li>احترم الآخرين.</li>
-                        <li>كن دقيقًا في مواعيدك.</li>
-                        <li>حافظ على نظافة مكان العمل.</li>
-                        <li>قم بإبلاغ أي مشاكل على الفور.</li>
-                        <li>كن مستعدًا للحصة.</li>
+                        <li>✅ احترم الآخرين.</li>
+                        <li>⏰ كن دقيقًا في مواعيدك.</li>
+                        <li>🧹 حافظ على نظافة مكان العمل.</li>
+                        <li>⚠️ قم بإبلاغ أي مشاكل على الفور.</li>
+                        <li>📚 كن مستعدًا للحصة.</li>
                     </ul>
+
+
                 </div>
             </section>
             {/* Yellow Line */}

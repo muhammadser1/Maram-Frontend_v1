@@ -63,7 +63,7 @@ const CreateGroupLesson = () => {
         };
 
         try {
-            await axios.post(`http://localhost:8000/group_lessons/submit?token=${token}`, lessonData);
+            await axios.post(`https://maram-classmanager-backend.onrender.com/group_lessons/submit?token=${token}`, lessonData);
             alert("تم إنشاء الدرس الجماعي بنجاح!");
             navigate('/TeacherDashboard');
         } catch (error) {

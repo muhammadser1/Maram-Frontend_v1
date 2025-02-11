@@ -35,7 +35,7 @@ const ResetPassword = () => {
 
         try {
             console.log('Sending request to reset password...');
-            const response = await axios.post('http://localhost:8000/user/reset-password', {
+            const response = await axios.post('https://maram-classmanager-backend.onrender.com/user/reset-password', {
                 token,
                 new_password: password,
             });

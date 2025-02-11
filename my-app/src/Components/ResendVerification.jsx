@@ -12,7 +12,7 @@ const ResendVerification = () => {
     useEffect(() => {
         const resendVerificationEmail = async () => {
             try {
-                const response = await axios.post('http://localhost:8000/user/resend-verification', { email });
+                const response = await axios.post('https://maram-classmanager-backend.onrender.com/user/resend-verification', { email });
                 setMessage(response.data.message);
 
                 // Redirect to login after successful resend

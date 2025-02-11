@@ -62,7 +62,7 @@ const ApprovedGroupLessonsAdmin = () => {
         try {
             console.log("📡 Fetching approved group lessons...");
 
-            const response = await axios.get(`http://localhost:8000/admin/approved-group-lessons?token=${token}`);
+            const response = await axios.get(`https://maram-classmanager-backend.onrender.com/admin/approved-group-lessons?token=${token}`);
 
             console.log("✅ Response from backend:", response.data);
 

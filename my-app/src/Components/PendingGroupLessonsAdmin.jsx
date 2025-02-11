@@ -37,7 +37,7 @@ const PendingGroupLessonsAdmin = () => {
             if (!token) return;
 
             try {
-                const response = await fetch(`http://127.0.0.1:8000/admin/pending-group-lessons?token=${token}`);
+                const response = await fetch(`https://maram-classmanager-backend.onrender.com/admin/pending-group-lessons?token=${token}`);
                 const data = await response.json();
 
                 if (!response.ok) {

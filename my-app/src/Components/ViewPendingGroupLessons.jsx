@@ -40,7 +40,7 @@ const ViewPendingGroupLessons = () => {
             }
 
             try {
-                const response = await axios.get(`http://localhost:8000/group_lessons/pending-lessons?token=${token}`);
+                const response = await axios.get(`https://maram-classmanager-backend.onrender.com/group_lessons/pending-lessons?token=${token}`);
                 setPendingLessons(response.data.pending_lessons.map(lesson => ({
                     ...lesson,
                     isEditing: false
@@ -149,7 +149,7 @@ const ViewPendingGroupLessons = () => {
         const lessonToSave = pendingLessons.find((lesson) => lesson._id === lessonId);
 
         try {
-            await axios.put(`http://localhost:8000/group_lessons/update-lesson/${lessonId}?token=${token}`, lessonToSave);
+            await axios.put(`https://maram-classmanager-backend.onrender.com/group_lessons/update-lesson/${lessonId}?token=${token}`, lessonToSave);
 
             setPendingLessons((prevLessons) =>
                 prevLessons.map((lesson) =>
@@ -176,7 +176,7 @@ const ViewPendingGroupLessons = () => {
         const token = localStorage.getItem("access_token");
 
         try {
-            await axios.delete(`http://localhost:8000/group_lessons/delete-lesson/${lessonId}?token=${token}`);
+            await axios.delete(`https://maram-classmanager-backend.onrender.com/group_lessons/delete-lesson/${lessonId}?token=${token}`);
 
             setPendingLessons(prevLessons => prevLessons.filter(lesson => lesson._id !== lessonId));
             alert("Lesson deleted successfully!");

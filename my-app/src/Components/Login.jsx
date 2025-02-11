@@ -5,7 +5,7 @@ import { jwtDecode } from 'jwt-decode';
 
 const Login = () => {
     const navigate = useNavigate();
-    const goToHome = () => navigate('/homepage');
+    const goToHome = () => navigate('/');
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -18,7 +18,7 @@ const Login = () => {
         try {
             console.log("Attempting login with username:", username);
 
-            const response = await fetch("http://127.0.0.1:8000/user/signin", {
+            const response = await fetch("https://maram-classmanager-backend.onrender.com/user/signin", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -80,6 +80,7 @@ const Login = () => {
                 {error && <p className="error-message">{error}</p>}
                 <form onSubmit={handleLogin}>
                     <div className="input-group">
+                        <span className="input-icon">👤</span>
                         <input
                             type="text"
                             placeholder="Username"
@@ -89,6 +90,7 @@ const Login = () => {
                         />
                     </div>
                     <div className="input-group">
+                        <span className="input-icon">🔒</span>
                         <input
                             type="password"
                             placeholder="Password"
@@ -99,6 +101,7 @@ const Login = () => {
                             required
                         />
                     </div>
+
                     <button type="submit" className="login-button">Login</button>
                     <div className="login-options">
                         <a href="#" onClick={() => navigate("/ForgetPassword")}>Forgot Password?</a>

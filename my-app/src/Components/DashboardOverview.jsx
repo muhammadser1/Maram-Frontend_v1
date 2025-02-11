@@ -57,7 +57,7 @@ const DashboardOverview = () => {
         const fetchDashboardData = async () => {
             try {
                 const token = localStorage.getItem("access_token");
-                const response = await axios.get(`http://localhost:8000/group_lessons/dashboard-overview?token=${token}&month=${selectedMonth}`);
+                const response = await axios.get(`https://maram-classmanager-backend.onrender.com/group_lessons/dashboard-overview?token=${token}&month=${selectedMonth}`);
 
                 setTotalLessons(response.data.total_lessons);
                 setTotalHours(response.data.total_hours);

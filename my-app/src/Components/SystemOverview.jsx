@@ -31,7 +31,7 @@ const SystemOverview = () => {
             try {
                 console.log(`🔍 Fetching teacher stats for month: ${selectedMonth}`);
 
-                const response = await fetch(`http://localhost:8000/admin/teacher-individual-stats?month=${selectedMonth}&token=${token}`);
+                const response = await fetch(`https://maram-classmanager-backend.onrender.com/admin/teacher-individual-stats?month=${selectedMonth}&token=${token}`);
                 const data = await response.json();
 
                 console.log("✅ Teacher Stats API Response:", data);
@@ -68,7 +68,7 @@ const SystemOverview = () => {
             try {
                 console.log(`🔍 Fetching student stats for month: ${selectedMonth}`);
 
-                const response = await fetch(`http://localhost:8000/admin/student-stats?month=${selectedMonth}&token=${token}`);
+                const response = await fetch(`https://maram-classmanager-backend.onrender.com/admin/student-stats?month=${selectedMonth}&token=${token}`);
                 const data = await response.json();
 
                 console.log("✅ Student Stats API Response:", data);

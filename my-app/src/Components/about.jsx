@@ -32,7 +32,7 @@ const AboutInstitute = () => {
                 </div>
 
                 {/* Back to Home Button */}
-                <button className="back-home-button" onClick={() => navigate('/homepage')}>
+                <button className="back-home-button" onClick={() => navigate('/')}>
                     العودة إلى الصفحة الرئيسية
                 </button>
             </div>

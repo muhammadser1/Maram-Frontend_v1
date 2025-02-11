@@ -13,7 +13,7 @@ const ForgetPassword = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:8000/user/forgot-password', {
+            const response = await fetch('https://maram-classmanager-backend.onrender.com/user/forgot-password', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

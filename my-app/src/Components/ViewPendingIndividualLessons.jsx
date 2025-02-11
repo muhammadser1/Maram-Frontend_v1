@@ -53,7 +53,7 @@ const ViewPendingIndividualLessons = () => {
         const fetchPendingLessons = async () => {
             try {
                 const token = localStorage.getItem("access_token");
-                const response = await axios.get(`http://localhost:8000/teacher/pending-lessons?token=${token}`);
+                const response = await axios.get(`https://maram-classmanager-backend.onrender.com/teacher/pending-lessons?token=${token}`);
 
                 console.log("📄 Fetched Pending Lessons:", response.data.pending_lessons);
                 const lessons = response.data.pending_lessons.map((lesson) => ({

@@ -40,7 +40,7 @@ const ViewApprovedIndividualLessons = () => {
                     return;
                 }
 
-                const response = await axios.get(`http://localhost:8000/teacher/approved-lessons?token=${token}`);
+                const response = await axios.get(`https://maram-classmanager-backend.onrender.com/teacher/approved-lessons?token=${token}`);
                 console.log("📄 Fetched Approved Lessons:", response.data.approved_lessons);
                 setApprovedLessons(response.data.approved_lessons);
             } catch (error) {

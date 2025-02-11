@@ -7,6 +7,33 @@
     align-items: center;
 }
 
+.homepage-policies-list {
+    list-style-position: inside;
+    direction: rtl;
+    text-align: right;
+}
+
+.homepage-policies-list {
+    list-style: none;
+    /* Remove default bullets */
+    direction: rtl;
+    text-align: right;
+    padding: 0;
+}
+
+.homepage-policies-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Spacing between icon and text */
+    font-size: 18px;
+}
+
+.policy-icon {
+    color: #007bff;
+    /* Change color if needed */
+}
+
 /* Container for header content */
 .homepage-header-container {
     width: 100%;

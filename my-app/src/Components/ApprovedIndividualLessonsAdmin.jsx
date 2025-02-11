@@ -61,7 +61,7 @@ const ApprovedIndividualLessonsAdmin = () => {
 
     const fetchApprovedLessons = async (token) => {
         try {
-            const response = await axios.get(`http://localhost:8000/admin/approved-individual-lessons?token=${token}`);
+            const response = await axios.get(`https://maram-classmanager-backend.onrender.com/admin/approved-individual-lessons?token=${token}`);
             setLessons(response.data.approved_lessons);
         } catch (error) {
             console.error("❌ Error fetching approved individual lessons:", error);
