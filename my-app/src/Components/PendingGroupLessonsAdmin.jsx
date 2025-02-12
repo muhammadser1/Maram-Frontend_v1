@@ -96,7 +96,7 @@ const PendingGroupLessonsAdmin = () => {
         if (!token) return;
 
         try {
-            const response = await fetch(`https://maram-classmanager-backend.onrender.com//admin/reject-group-lesson/${id}?token=${token}`, {
+            const response = await fetch(`https://maram-classmanager-backend.onrender.com/admin/reject-group-lesson/${id}?token=${token}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" }
             });
