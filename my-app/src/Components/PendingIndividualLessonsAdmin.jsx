@@ -76,7 +76,7 @@ const PendingIndividualLessonsAdmin = () => {
     const handleApprove = async (id) => {
         try {
             const token = localStorage.getItem("access_token");
-            await axios.post(`http://127.0.0.1:8000/admin/approve-individual-lesson/${id}?token=${token}`);
+            await axios.post(`https://maram-classmanager-backend.onrender.com//admin/approve-individual-lesson/${id}?token=${token}`);
             setLessons(prevLessons => prevLessons.filter(lesson => lesson._id !== id));
             alert("✅ تمت الموافقة على الدرس!");
         } catch (error) {
@@ -88,7 +88,7 @@ const PendingIndividualLessonsAdmin = () => {
     const handleReject = async (id) => {
         try {
             const token = localStorage.getItem("access_token");
-            await axios.post(`http://localhost:8000/admin/reject-individual-lesson/${id}?token=${token}`);
+            await axios.post(`https://maram-classmanager-backend.onrender.com//admin/reject-individual-lesson/${id}?token=${token}`);
             setLessons(prevLessons => prevLessons.filter(lesson => lesson._id !== id));
             alert("❌ تم رفض الدرس!");
         } catch (error) {

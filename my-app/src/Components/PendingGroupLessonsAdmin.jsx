@@ -75,7 +75,7 @@ const PendingGroupLessonsAdmin = () => {
         if (!token) return;
 
         try {
-            const response = await fetch(`http://127.0.0.1:8000/admin/approve-group-lesson/${id}?token=${token}`, {
+            const response = await fetch(`https://maram-classmanager-backend.onrender.com/admin/approve-group-lesson/${id}?token=${token}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" }
             });
@@ -96,7 +96,7 @@ const PendingGroupLessonsAdmin = () => {
         if (!token) return;
 
         try {
-            const response = await fetch(`http://127.0.0.1:8000/admin/reject-group-lesson/${id}?token=${token}`, {
+            const response = await fetch(`https://maram-classmanager-backend.onrender.com//admin/reject-group-lesson/${id}?token=${token}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" }
             });

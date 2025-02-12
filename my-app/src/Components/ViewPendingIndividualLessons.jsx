@@ -83,7 +83,7 @@ const ViewPendingIndividualLessons = () => {
 
         try {
             const token = localStorage.getItem("access_token");
-            await axios.delete(`http://localhost:8000/teacher/delete-lesson/${lessonId}?token=${token}`);
+            await axios.delete(`https://maram-classmanager-backend.onrender.com/teacher/delete-lesson/${lessonId}?token=${token}`);
 
             alert("Lesson deleted successfully!");
             setPendingLessons((prevLessons) =>
@@ -121,7 +121,7 @@ const ViewPendingIndividualLessons = () => {
         const lessonToUpdate = pendingLessons.find((lesson) => lesson._id === lessonId);
 
         try {
-            await axios.put(`http://localhost:8000/teacher/update-lesson/${lessonId}?token=${token}`, lessonToUpdate);
+            await axios.put(`https://maram-classmanager-backend.onrender.com/teacher/update-lesson/${lessonId}?token=${token}`, lessonToUpdate);
             alert("Lesson updated successfully!");
             handleEditToggle(lessonId);
         } catch (error) {
