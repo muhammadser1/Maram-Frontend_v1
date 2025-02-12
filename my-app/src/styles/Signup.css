@@ -85,3 +85,64 @@
 .signup-options a:hover {
     text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+
+    /* Make background responsive */
+    .signup-container {
+        background-size: cover;
+        /* Ensure background covers screen */
+        padding: 20px;
+        /* Add padding for better spacing */
+        height: auto;
+        /* Allow content to expand */
+        min-height: 100vh;
+        /* Maintain full height */
+    }
+
+    /* Reduce title size for better fit */
+    .signup-title {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+    /* Adjust signup box */
+    .signup-box {
+        width: 90%;
+        /* Make it fit smaller screens */
+        padding: 2rem;
+        max-width: 320px;
+        /* Prevent excessive width */
+    }
+
+    /* Increase input field spacing */
+    .input-group input {
+        padding: 10px;
+        font-size: 0.9rem;
+        /* Reduce font size */
+    }
+
+    /* Make buttons fit mobile screens */
+    .signup-button,
+    .home-button {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    /* Adjust icons */
+    .signup-icon,
+    .login-icon {
+        font-size: 3rem;
+        /* Slightly smaller icons */
+        margin-bottom: 10px;
+    }
+
+    /* Adjust spacing for links */
+    .signup-options {
+        font-size: 0.9rem;
+    }
+
+    .signup-options a {
+        margin: 0 5px;
+    }
+}

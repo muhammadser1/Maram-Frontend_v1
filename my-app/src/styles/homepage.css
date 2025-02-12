@@ -475,3 +475,163 @@ body {
     margin: 5px 0;
     /* Space around links */
 }
+
+
+
+
+
+
+/* Mobile (phones) - Screens smaller than 768px */
+@media (max-width: 768px) {
+    .homepage-actions {
+        margin-top: 20px;
+    }
+
+    .homepage-nav-button:last-of-type {
+        margin-bottom: 20px;
+    }
+
+    /* Adjust header padding */
+    .homepage-header {
+        padding: 16px 20px;
+        /* Reduce padding */
+        flex-direction: column;
+        /* Stack items */
+    }
+
+    /* Make logo and nav align properly */
+    .homepage-header-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .homepage-nav {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    /* Reduce hero section padding */
+    .homepage-hero {
+        padding: 40px 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Reduce hero title size */
+    .homepage-hero-title {
+        font-size: 32px;
+        /* Smaller title */
+    }
+
+    .homepage-hero-description {
+        font-size: 16px;
+    }
+
+    /* Make image smaller */
+    .homepage-hero-image img {
+        max-width: 300px;
+        width: 80%;
+        left: 0;
+    }
+
+    /* Reduce padding in collaboration section */
+    .homepage-collaboration {
+        padding: 40px 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .homepage-collaboration-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .homepage-collaboration-image img {
+        max-width: 300px;
+        width: 80%;
+    }
+
+    .homepage-collaboration-content {
+        max-width: 100%;
+    }
+
+    /* Adjust policy list */
+    .homepage-policies {
+        padding: 40px 20px;
+    }
+
+    .homepage-policies-list li {
+        font-size: 18px;
+        padding: 14px 20px;
+    }
+
+    /* Adjust footer */
+    .site-footer {
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Reduce button sizes */
+    .homepage-hero-button,
+    .homepage-collaboration-buttons button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    /* Make birthday section responsive */
+    .birthday-section {
+        padding: 20px;
+    }
+
+    .birthday-images-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .birthday-background {
+        max-width: 200px;
+    }
+
+    .birthday-left-image,
+    .birthday-right-image {
+        width: 60px;
+    }
+}
+
+/* Navigation Buttons */
+.homepage-nav-button {
+    background-color: #4F9CF9;
+    /* Blue color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    /* Rounded edges */
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.homepage-nav-button:hover {
+    background-color: #3A89D6;
+    /* Darker blue on hover */
+    transform: scale(1.05);
+    /* Slight zoom effect */
+}
+
+.homepage-nav-button:active {
+    background-color: #0056b3;
+    /* Even darker when clicked */
+    transform: scale(0.98);
+    /* Click effect */
+}
+
+/* Make buttons align properly */
+.homepage-nav {
+    display: flex;
+    gap: 16px;
+    /* Space between buttons */
+}

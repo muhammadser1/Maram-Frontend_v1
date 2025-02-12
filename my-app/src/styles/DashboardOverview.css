@@ -142,3 +142,248 @@
     height: auto !important;
     max-height: 200px;
 }
+
+
+
+
+
+/* General Teacher Dashboard Styling */
+.teacher-dashboard-container {
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: url('/images/Element.png') no-repeat center top, linear-gradient(to bottom, #00416A, #E4E5E6);
+}
+
+/* Header Styling */
+.teacher-dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.teacher-dashboard-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Logout Button */
+.logout-button {
+    background: linear-gradient(45deg, #ff4b5c, #ff6f61);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.logout-button:hover {
+    background: linear-gradient(45deg, #e43f50, #ff4b5c);
+    transform: translateY(-4px);
+}
+
+/* Grid Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 450px 1fr;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+/* Columns */
+.grid-column {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+
+/* Image Styling */
+.grid-image img.expanded-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.grid-image img.expanded-image:hover {
+    transform: scale(1.05);
+}
+
+/* Dashboard Card Styling */
+.dashboard-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 220px;
+    padding: 15px;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dashboard-card .card-icon {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+.dashboard-card .card-title {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+}
+
+/* Animated Background Circles */
+.animated-bg-circle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent);
+    border-radius: 50%;
+    top: 20%;
+    left: 10%;
+    animation: float 6s ease-in-out infinite;
+    z-index: 1;
+}
+
+.animated-bg-circle.delay {
+    top: 60%;
+    left: 70%;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Adjust container padding */
+    .teacher-dashboard-container {
+        height: auto;
+        padding: 20px 10px;
+    }
+
+    /* Stack header items */
+    .teacher-dashboard-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .teacher-dashboard-title {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    /* Make logout button smaller */
+    .logout-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    /* Stack grid items in one column */
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    /* Adjust grid column spacing */
+    .grid-column {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Make cards full width */
+    .dashboard-card {
+        width: 100%;
+        max-width: 300px;
+        padding: 18px;
+        font-size: 1rem;
+    }
+
+    .dashboard-card .card-icon {
+        font-size: 1.8rem;
+    }
+
+    .dashboard-card .card-title {
+        font-size: 1.4rem;
+    }
+
+    /* Adjust overview card */
+    .dashboard-overview {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Reduce image size */
+    .grid-image img.expanded-image {
+        max-height: 300px;
+    }
+
+    /* Hide background circles on mobile for better readability */
+    .animated-bg-circle {
+        display: none;
+    }
+
+    /* -------------------------------------- */
+    /* 📊 Fix Chart Sizes for Mobile Screens */
+    /* -------------------------------------- */
+
+    .charts-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .chart-container {
+        width: 100% !important;
+        max-width: 400px;
+        /* Increase size */
+        min-height: 300px;
+        /* Ensure it has height */
+        padding: 20px;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 15px;
+    }
+
+    .chart-container canvas {
+        width: 100% !important;
+        height: 280px !important;
+    }
+
+}
