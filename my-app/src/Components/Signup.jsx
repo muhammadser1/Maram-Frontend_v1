@@ -1,20 +1,52 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Signup.css";
+
 const Signup = () => {
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [birthday, setBirthday] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [error, setError] = useState('');
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [birthday, setBirthday] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [error, setError] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
+    const [loading, setLoading] = useState(false);
     const [monkeyEmoji, setMonkeyEmoji] = useState("🙉");
+
     const navigate = useNavigate();
+
+    // Function to validate age (must be at least 18)
+    const isValidAge = (birthday) => {
+        const birthDate = new Date(birthday);
+        const today = new Date();
+        const age = today.getFullYear() - birthDate.getFullYear();
+        return age >= 18;
+    };
+
+    // Reset error when user types
+    const handleInputChange = (setter) => (e) => {
+        setter(e.target.value);
+        setError(""); // Clear error when user types
+        setSuccessMessage(""); // Clear success message
+    };
 
     const handleSignup = async (e) => {
         e.preventDefault();
+        setError("");
+        setSuccessMessage("");
+        setLoading(true);
+
+        // Password match check
         if (password !== confirmPassword) {
             setError("Passwords do not match.");
+            setLoading(false);
+            return;
+        }
+
+        // Age validation
+        if (!isValidAge(birthday)) {
+            setError("You must be at least 18 years old to sign up.");
+            setLoading(false);
             return;
         }
 
@@ -23,103 +55,109 @@ const Signup = () => {
             email,
             birthday,
             password,
-            role: "teacher"
+            role: "teacher",
         };
 
         try {
             const response = await fetch("https://maram-classmanager-backend.onrender.com/user/signup", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
             });
 
+            const data = await response.json();
+
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error("Signup failed");
+                throw new Error(data.detail || "Signup failed");
             }
 
-            const data = await response.json();
-            console.log("Signup successful:", data);
-            setTimeout(() => navigate("/login"), 2000); // Redirect to login after 2 seconds
+            setSuccessMessage("Signup successful! Please check your email to verify your account.");
+            setTimeout(() => navigate("/login"), 3000); // Redirect after 3 seconds
         } catch (error) {
-            console.error("Signup error:", error.message);
-            setError(error.message); // Set the specific error message
+            if (error.message.includes("User with this email or username already exists")) {
+                setError("Username or email is already registered.");
+            } else {
+                setError(error.message);
+            }
+        } finally {
+            setLoading(false);
         }
-    };
-
-    const handlePasswordFocus = () => {
-        setMonkeyEmoji("🙈");
-    };
-
-    const handlePasswordBlur = () => {
-        setMonkeyEmoji("🙉");
     };
 
     return (
         <div className="signup-container">
-            {/* Arabic Motivational Title */}
             <h2 className="signup-title">✨ سجل وانضم إلينا في رحلتنا التعليمية ✨</h2>
 
-            {/* Signup Box */}
             <div className="signup-box">
                 <div className="signup-icon">{monkeyEmoji}</div>
                 <h2>Sign Up</h2>
+
+                {/* Show success or error messages */}
                 {error && <p className="error-message">{error}</p>}
+                {successMessage && <p className="success-message">{successMessage}</p>}
+
                 <form onSubmit={handleSignup}>
                     <div className="input-group">
                         <input
                             type="text"
                             placeholder="Username"
                             value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={handleInputChange(setUsername)}
                             required
                         />
                     </div>
-                    <div className="animated-bg-circle"></div>
-                    <div className="animated-bg-circle delay"></div>
 
                     <div className="input-group">
                         <input
                             type="email"
                             placeholder="Email"
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={handleInputChange(setEmail)}
                             required
                         />
                     </div>
                     <div className="input-group">
                         <input
-                            type="date"
+                            type="text"
                             placeholder="Birthday"
+                            onFocus={(e) => (e.target.type = "date")} // Change to date on focus
+                            onBlur={(e) => (e.target.type = "text")} // Revert to text on blur if empty
                             value={birthday}
                             onChange={(e) => setBirthday(e.target.value)}
+                            className="birthday-input"
+                            required
                         />
                     </div>
+
+
                     <div className="input-group">
                         <input
                             type="password"
                             placeholder="Password"
                             value={password}
-                            onFocus={handlePasswordFocus}
-                            onBlur={handlePasswordBlur}
-                            onChange={(e) => setPassword(e.target.value)}
+                            onFocus={() => setMonkeyEmoji("🙈")}
+                            onBlur={() => setMonkeyEmoji("🙉")}
+                            onChange={handleInputChange(setPassword)}
                             required
                         />
                     </div>
+
                     <div className="input-group">
                         <input
                             type="password"
                             placeholder="Confirm Password"
-                            onFocus={handlePasswordFocus}
-                            onBlur={handlePasswordBlur}
                             value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            onFocus={() => setMonkeyEmoji("🙈")}
+                            onBlur={() => setMonkeyEmoji("🙉")}
+                            onChange={handleInputChange(setConfirmPassword)}
                             required
                         />
                     </div>
-                    <button type="submit" className="signup-button">Sign Up</button>
+
+                    <button type="submit" className="signup-button" disabled={loading}>
+                        {loading ? "Signing Up..." : "Sign Up"}
+                    </button>
+
                     <div className="signup-options">
                         <a href="#" onClick={() => navigate("/login")}>Already have an account? Login</a>
                     </div>

@@ -1,11 +1,21 @@
 /* Background Styling */
 .login-container {
-    background: #aecee6 url('../images/Element.png') no-repeat center top;
+    background:
+        url('../images/logo-removebg-preview.png') no-repeat right center,
+        /* Second background */
+        url('../images/Element.png') no-repeat center top,
+        /* First background */
+        #aecee6;
+    /* Background color */
     background-size: contain;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-size:
+        40% auto,
+        /* Makes the logo even smaller */
+        cover;
 }
 
 .login-container {

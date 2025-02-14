@@ -12,9 +12,16 @@ const Login = () => {
     const [error, setError] = useState('');
     const [monkeyEmoji, setMonkeyEmoji] = useState("🙉");
 
+    // Function to handle input changes and reset error
+    const handleInputChange = (setter) => (e) => {
+        setter(e.target.value);
+        setError(""); // Clear error when user types
+    };
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        setError(""); // Clear previous errors
+
         try {
             console.log("Attempting login with username:", username);
 
@@ -31,7 +38,7 @@ const Login = () => {
 
             if (!response.ok) {
                 console.error("Login failed with status:", response.status);
-                throw new Error(data.detail || "Login failed");
+                throw new Error(data.detail || "Invalid username or password");
             }
 
             // Store token in localStorage
@@ -58,8 +65,6 @@ const Login = () => {
         }
     };
 
-
-
     const handlePasswordFocus = () => {
         setMonkeyEmoji("🙈");
     };
@@ -77,7 +82,10 @@ const Login = () => {
             <div className="login-box">
                 <div className="login-icon">{monkeyEmoji}</div>
                 <h2>Login</h2>
+
+                {/* Error Message */}
                 {error && <p className="error-message">{error}</p>}
+
                 <form onSubmit={handleLogin}>
                     <div className="input-group">
                         <span className="input-icon">👤</span>
@@ -85,7 +93,7 @@ const Login = () => {
                             type="text"
                             placeholder="Username"
                             value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={handleInputChange(setUsername)} // Clears error when typing
                             required
                         />
                     </div>
@@ -97,7 +105,7 @@ const Login = () => {
                             value={password}
                             onFocus={handlePasswordFocus}
                             onBlur={handlePasswordBlur}
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={handleInputChange(setPassword)} // Clears error when typing
                             required
                         />
                     </div>
