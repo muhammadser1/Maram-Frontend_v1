@@ -110,7 +110,7 @@ function TeacherDashboard() {
 
                     <div className="grid-image">
                         <h2 className="creative-text" style={{ textAlign: 'left', marginLeft: '20px' }}>✨🚀 مرحبًا بك في لوحة التحكم الخاصة بك!</h2>
-                        <img src="../images/sss.png" alt="عرض لوحة التحكم" className="large-image expanded-image" />
+                        <img src="../images/logo-removebg-preview.png" alt="عرض لوحة التحكم" className="large-image expanded-image" />
                         <div className="dashboard-overview" style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
                             <DashboardCard
                                 title="نظرة عامة على لوحة التحكم"

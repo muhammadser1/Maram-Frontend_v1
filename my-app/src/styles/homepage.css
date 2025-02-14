@@ -1,6 +1,6 @@
 /* General header styling */
 .homepage-header {
-    background-color: #043873;
+    background-color: #e2f3ff;
     padding: 16px 220px;
     display: flex;
     justify-content: center;
@@ -599,6 +599,14 @@ body {
     .birthday-right-image {
         width: 60px;
     }
+
+    .logo-image {
+        width: 150px;
+        /* Adjust size as needed */
+        height: auto;
+        object-fit: contain;
+    }
+
 }
 
 /* Navigation Buttons */
@@ -634,4 +642,11 @@ body {
     display: flex;
     gap: 16px;
     /* Space between buttons */
+}
+
+.logo-image {
+    width: 150px;
+    /* Adjust size as needed */
+    height: auto;
+    object-fit: contain;
 }

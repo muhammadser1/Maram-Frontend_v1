@@ -16,6 +16,7 @@
     padding: 15px 30px;
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
 }
 
 .institute-name {
@@ -101,9 +102,13 @@
     justify-content: center;
     align-items: center;
     padding: 40px;
-    /* background-color: rgba(252, 192, 192, 0.8); */
     background-color: #d8fbff;
+    background-image: url('../images/logo-removebg-preview.png');
+    background-repeat: no-repeat;
+    background-position: right 50px center;
+    background-attachment: fixed;
 }
+
 
 .profile-section {
     background: url('../images/images-removebg-preview.png') no-repeat center center fixed;

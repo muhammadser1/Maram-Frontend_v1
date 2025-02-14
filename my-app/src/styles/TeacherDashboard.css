@@ -175,4 +175,19 @@
     .teacher-dashboard-main {
         padding: 20px;
     }
+
+    .dashboard-card {
+        position: relative;
+        /* Ensures the button is above other elements */
+        z-index: 10;
+        /* Higher z-index brings it to the front */
+    }
+
+}
+
+.dashboard-card {
+    position: relative;
+    /* Ensures the button is above other elements */
+    z-index: 10;
+    /* Higher z-index brings it to the front */
 }

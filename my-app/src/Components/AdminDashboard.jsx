@@ -8,7 +8,7 @@ import "../styles/AdminDashboard.css";
 function AdminDashboard() {
     const navigate = useNavigate();
     const [adminName, setAdminName] = useState('');
-    const instituteName = "اسم المعهد"; // Replace with dynamic data if needed
+    const instituteName = "معهد المرام"; // Replace with dynamic data if needed
 
     useEffect(() => {
         validateToken();

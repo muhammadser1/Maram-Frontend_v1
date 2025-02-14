@@ -35,7 +35,9 @@ const Homepage = () => {
         <>
             <header className="homepage-header">
                 <div className="homepage-header-container">
-                    <div className="homepage-logo">معهد المرام</div>
+                    <div className="homepage-logo">
+                        <img src="../images/logo-removebg-preview.png" alt="معهد المرام" className="logo-image" />
+                    </div>
                     <nav className="homepage-nav">
                         <button className="homepage-nav-button" onClick={() => navigate('/about')}>عن المعهد</button>
                         <button className="homepage-nav-button" onClick={() => navigate('/ContactUs')}>تواصل معنا</button>
