@@ -41,7 +41,8 @@ const Homepage = () => {
     const navigate = useNavigate();
     const [birthdays, setBirthdays] = useState([]);
     const [message, setMessage] = useState("");
-
+    const goToLogin = () => navigate('/login');
+    const goToSignup = () => navigate('/signup');
     useEffect(() => {
         const randomIndex = Math.floor(Math.random() * messages.length);
         setMessage(messages[randomIndex]);
@@ -91,7 +92,21 @@ const Homepage = () => {
                     <p className="ramadan-message">{message}</p>
                 </div>
             </section>
-
+            {/* Hero Section */}
+            <section className="homepage-hero">
+                <div className="homepage-hero-container">
+                    <div className="homepage-hero-text">
+                        <h1 className="homepage-hero-title">طور مهاراتك التعليمية مع معهد المرام</h1>
+                        <p className="homepage-hero-description">
+                            انضم إلى معهد المرام وكن جزءًا من شبكة من المعلمين المحترفين. نوفر لك الأدوات والدورات التي تحتاجها لتعزيز تجربتك التعليمية وتوسيع مهاراتك.
+                        </p>
+                        <button className="homepage-hero-button" onClick={goToSignup}>ابدأ رحلتك التعليمية الآن</button>
+                    </div>
+                    <div className="homepage-hero-image">
+                        <img src="../images/sss.png" alt="معهد المرام للمعلمين" />
+                    </div>
+                </div>
+            </section>
             {/* Yellow Line */}
             <div className="homepage-yellow-line"></div>
             {/* Drive Section */}
