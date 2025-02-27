@@ -1,14 +1,52 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import '../styles/homepage.css';
 import { CheckCircle } from "lucide-react";
+
+const messages = [
+    "رمضان مبارك اجعل أيامك مليئة بالخير والبركة",
+    "استقبل رمضان بقلب نقي وروح صافية",
+    "في هذا الشهر الفضيل اغتنم الفرصة للعبادة والتأمل",
+    "اللهم اجعلنا من عتقائك من النار في هذا الشهر العظيم",
+    "رمضان فرصة ذهبية للعودة إلى الله",
+    "املأ أيام رمضان بالصلاة والذكر والعمل الصالح",
+    "اللهم اجعل رمضان شفاءً لقلوبنا",
+    "في كل يوم من رمضان افتح قلبك للمغفرة والمحبة",
+    "استغل الشهر الفضيل لتقوية علاقتك بالله وأحبائك",
+    "اللهم بلغنا ليلة القدر واجعل لنا فيها نصيباً من الرحمة والمغفرة",
+    "رمضان شهر الصيام فليكن صيامنا قربةً لله",
+    "بادر في رمضان لنشر الخير والابتسامة",
+    "اللهم اجعل لنا في رمضان نصيبًا من كل خير",
+    "كن سباقًا في رمضان لفعل الخير ومساعدة الآخرين",
+    "رمضان تذكير بأن القلوب الصافية تصنع العجائب",
+    "استغل هذا الشهر لتجديد علاقتك بالله",
+    "رمضان يأتي ليطهر قلوبنا وينير دروبنا",
+    "اللهم اجعل صيامنا مقبولًا وذنوبنا مغفورة",
+    "كل يوم في رمضان فرصة جديدة لتكون أفضل",
+    "املأ يومك في رمضان بالذكر والتسبيح",
+    "رمضان هو شهر المغفرة فلا تفوت الفرصة",
+    "اللهم اجعلنا من الصائمين القائمين",
+    "أدعو الله أن يكون رمضانك مليئًا بالسعادة",
+    "صم بقلبك قبل أن تصوم بجسدك",
+    "اللهم اجعل هذا الشهر الكريم مصدر بركة وسلام",
+    "كل يوم يقربك أكثر من الله في رمضان",
+    "ابحث عن لحظات السعادة في أبسط الأشياء خلال رمضان",
+    "اللهم اجعل آخر رمضاننا خيرًا من أوله",
+    "رمضان مبارك نسأل الله لكم القبول والمغفرة",
+    "ليكن رمضانك مختلفًا هذا العام املأه بالخير",
+    "اجعل من رمضان نقطة تحول لحياتك الروحية"
+];
 
 const Homepage = () => {
     const navigate = useNavigate();
     const [birthdays, setBirthdays] = useState([]);
-    const goToLogin = () => navigate('/login');
-    const goToSignup = () => navigate('/signup');
+    const [message, setMessage] = useState("");
+
+    useEffect(() => {
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        setMessage(messages[randomIndex]);
+    }, []);
+
     useEffect(() => {
         const fetchBirthdays = async () => {
             try {
@@ -22,9 +60,6 @@ const Homepage = () => {
                 setBirthdays(data.birthdays);
             } catch (error) {
                 console.error("Error fetching birthdays:", error);
-                setError("حدث خطأ أثناء جلب بيانات أعياد الميلاد.");
-            } finally {
-                setLoading(false);
             }
         };
 
@@ -41,33 +76,19 @@ const Homepage = () => {
                     <nav className="homepage-nav">
                         <button className="homepage-nav-button" onClick={() => navigate('/about')}>عن المعهد</button>
                         <button className="homepage-nav-button" onClick={() => navigate('/ContactUs')}>تواصل معنا</button>
-
-
                     </nav>
                     <div className="homepage-actions">
-                        <button className="homepage-login" onClick={goToLogin}>تسجيل الدخول</button>
-                        <button className="homepage-get-started" onClick={goToSignup}>انضم كمعلم</button>
+                        <button className="homepage-login" onClick={() => navigate('/login')}>تسجيل الدخول</button>
+                        <button className="homepage-get-started" onClick={() => navigate('/signup')}>انضم كمعلم</button>
                     </div>
                 </div>
             </header>
-
-
-            {/* Yellow Line */}
             <div className="homepage-yellow-line"></div>
-
-            {/* Hero Section */}
-            <section className="homepage-hero">
-                <div className="homepage-hero-container">
-                    <div className="homepage-hero-text">
-                        <h1 className="homepage-hero-title">طور مهاراتك التعليمية مع معهد المرام</h1>
-                        <p className="homepage-hero-description">
-                            انضم إلى معهد المرام وكن جزءًا من شبكة من المعلمين المحترفين. نوفر لك الأدوات والدورات التي تحتاجها لتعزيز تجربتك التعليمية وتوسيع مهاراتك.
-                        </p>
-                        <button className="homepage-hero-button" onClick={goToSignup}>ابدأ رحلتك التعليمية الآن</button>
-                    </div>
-                    <div className="homepage-hero-image">
-                        <img src="../images/sss.png" alt="معهد المرام للمعلمين" />
-                    </div>
+            <section className="ramadan-section">
+                <div className="ramadan-background"></div>
+                <div className="ramadan-content">
+                    <h1 className="ramadan-title">رمضان مبارك</h1>
+                    <p className="ramadan-message">{message}</p>
                 </div>
             </section>
 
