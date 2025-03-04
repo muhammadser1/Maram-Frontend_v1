@@ -78,7 +78,7 @@ const PendingIndividualLessonsAdmin = () => {
             const token = localStorage.getItem("access_token");
             await axios.post(`https://maram-classmanager-backend.onrender.com/admin/approve-individual-lesson/${id}?token=${token}`);
             setLessons(prevLessons => prevLessons.filter(lesson => lesson._id !== id));
-            alert("✅ تمت الموافقة على الدرس!");
+            
         } catch (error) {
             console.error("❌ Error approving lesson:", error);
             alert("Failed to approve the lesson.");
