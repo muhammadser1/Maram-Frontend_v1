@@ -88,6 +88,7 @@ export default function CreateIndividualLesson() {
 
             setMessage('تم إنشاء الدرس الفردي بنجاح!');
             setError('');
+            navigate('/TeacherDashboard');
         } catch (err) {
             console.error('❌ Error:', err.response);
 
