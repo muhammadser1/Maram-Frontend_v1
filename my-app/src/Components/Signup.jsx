@@ -117,16 +117,15 @@ const Signup = () => {
                         />
                     </div>
                     <div className="input-group">
-                        <input
-                            type="text"
-                            placeholder="Birthday"
-                            onFocus={(e) => (e.target.type = "date")} // Change to date on focus
-                            onBlur={(e) => (e.target.type = "text")} // Revert to text on blur if empty
-                            value={birthday}
-                            onChange={(e) => setBirthday(e.target.value)}
-                            className="birthday-input"
-                            required
-                        />
+<input
+    type="date"
+    placeholder="Birthday"
+    value={birthday}
+    onChange={(e) => setBirthday(e.target.value)}
+    className="birthday-input"
+    required
+/>
+
                     </div>
 
 
