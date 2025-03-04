@@ -139,13 +139,15 @@ const Homepage = () => {
             <section className="homepage-policies">
                 <div className="homepage-policies-container">
                     <h2 className="homepage-policies-title">قوانين المعهد</h2>
-                    <ul className="homepage-policies-list">
-                        <li>✅ احترم الآخرين.</li>
-                        <li>⏰ كن دقيقًا في مواعيدك.</li>
-                        <li>🧹 حافظ على نظافة مكان العمل.</li>
-                        <li>⚠️ قم بإبلاغ أي مشاكل على الفور.</li>
-                        <li>📚 كن مستعدًا للحصة.</li>
-                    </ul>
+<ul className="homepage-policies-list">
+    <li>✅ احترم الآخرين.</li>
+    <li>⏰ كن دقيقًا في مواعيدك.</li>
+    <li>🧹 حافظ على نظافة مكان العمل.</li>
+    <li>⚠️ قم بإبلاغ أي مشاكل على الفور.</li>
+    <li>📚 كن مستعدًا للحصة.</li>
+    <li>📵 لا تستخدم الهاتف أثناء الحصة.</li>
+</ul>
+
 
 
                 </div>
@@ -196,7 +198,7 @@ const Homepage = () => {
             <footer class="site-footer">
                 <div class="footer-content">
                     <p>📧 Email: <a href="mailto:m.sarahni.99@gmail.com">m.sarahni.99@gmail.com</a></p>
-                    <p>📞 Phone: <a href="tel:+9728250579">+972 8250579</a></p>
+                    <p>📞 Phone: <a href="tel:+9728250579">0538250579</a></p>
                     <p>💻 Technical Support: Mohammad Sarahni</p>
 
                     <div class="social-links">
