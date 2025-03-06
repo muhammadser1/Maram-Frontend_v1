@@ -23,7 +23,7 @@ function TeacherDashboard() {
                 if (decodedToken.exp < currentTime) {
                     handleTokenExpiry();
                 } else {
-                    setTeacherName(decodedToken.sub || 'معلم');
+                    setTeacherName(decodedToken.username || 'معلم');
                 }
             } catch (error) {
                 handleInvalidToken();
@@ -69,7 +69,7 @@ function TeacherDashboard() {
     return (
         <div className="teacher-dashboard-container">
             <header className="teacher-dashboard-header">
-                <h1 className="teacher-dashboard-title">مرحبًا، {teacherName}!</h1>
+                <h1 className="teacher-dashboard-title"> {teacherName} مرحبًا  </h1>
                 <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
