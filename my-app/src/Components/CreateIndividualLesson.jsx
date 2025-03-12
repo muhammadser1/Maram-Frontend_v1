@@ -41,6 +41,8 @@ export default function CreateIndividualLesson() {
 
     // ✅ Convert Arabic hour labels to decimal values
     const hourOptions = {
+        "نصف ساعة": 0.5,
+        "ثلث ارباع الساعة": 0.75,
         "ساعة": 1,
         "ساعة وربع": 1.25,
         "ساعة ونصف": 1.5,
