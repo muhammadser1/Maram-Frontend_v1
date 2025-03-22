@@ -17,6 +17,7 @@
     position: absolute;
     border-radius: 50%;
     opacity: 0.3;
+    z-index: 1;
 }
 
 .pending-lessons-container::before {
