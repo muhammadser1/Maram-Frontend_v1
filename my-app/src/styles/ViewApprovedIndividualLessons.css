@@ -11,13 +11,7 @@
 }
 
 /* Decorative Circles */
-.approved-lessons-container::before,
-.approved-lessons-container::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.3;
-}
+
 
 .approved-lessons-container::before {
     width: 150px;
