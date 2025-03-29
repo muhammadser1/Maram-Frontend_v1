@@ -1,62 +1,62 @@
-.ramadan-section {
-    position: relative;
-    background-color: #e2f3ff;
-    /* Light blue background */
-    text-align: center;
-    padding: 80px 20px;
-    border-radius: 15px;
-    overflow: hidden;
-    width: 1860px;
-    height: 350px;
-    background: url('../images/4858_detail.jpg') no-repeat center center;
-    background-size: 100%;
-    /* Zoom out effect */
-    transform: scale(1);
-    /* Slightly scale down the section */
-    transform-origin: center;
-}
-
-.ramadan-background {
-    position: absolute;
-    top: 0;
-    left: 0;
+.homepage-eid {
+    background-color: #2C5563;
+    /* Fallback solid color */
     width: 100%;
-    height: 100%;
-    z-index: 0;
-}
-
-.ramadan-content {
-    position: relative;
-    z-index: 1;
+    height: 643px;
+    margin: auto;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    width: 100%;
-    margin-top: 150px;
-    /* Adjust this value to move the text lower */
+    justify-content: center;
+    border: 1px solid #964949;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    position: relative;
+
+    /* Background Image (Single PNG) */
+    background-image: url('../images/Facebook (4).png');
+    /* Make sure the path is correct */
+    background-size: cover;
+    /* Ensures full coverage */
+    background-position: center;
+    /* Centers the image */
+    background-repeat: no-repeat;
+
+    .homepage-eid {
+        position: relative;
+    }
+
+    /* Prevents repetition */
 }
 
-.ramadan-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #ffb700;
-    /* Gold color */
-    font-family: "Scheherazade", serif;
-    margin-bottom: 10px;
+.homepage-eid {
+    position: relative;
 }
 
-.ramadan-message {
-    font-size: 1.2rem;
-    color: #333;
-    font-weight: bold;
 
-    animation: changeMessage 30s infinite;
+.eid-text {
+    position: absolute;
+    /* This allows top/left positioning */
+    width: 200px;
+    /* Adjust size as needed */
+    height: auto;
+    top: 60%;
+    /* Move it down (increase this value for more shift) */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Keeps it centered horizontally */
 }
 
-@keyframes changeMessage {}
+@media (max-width: 768px) {
+    .homepage-eid {
+        min-height: 60vh;
+        border-radius: 0;
+    }
 
+    .eid-text {
+        width: 80%;
+        top: 65%;
+    }
+}
 
 
 
