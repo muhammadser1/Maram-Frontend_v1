@@ -12,7 +12,7 @@ const ApprovedIndividualLessonsAdmin = () => {
     const [searchStudent, setSearchStudent] = useState("");
     const [searchDate, setSearchDate] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
-    const rowsPerPage = 10;
+    const rowsPerPage = 20;
     const navigate = useNavigate();
 
     useEffect(() => {
