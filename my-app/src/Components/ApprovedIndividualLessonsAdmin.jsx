@@ -6,11 +6,20 @@ import { FaArrowLeft } from 'react-icons/fa';
 import axios from 'axios';
 import "../styles/ApprovedIndividualLessonsAdmin.css";
 
+
+
 const ApprovedIndividualLessonsAdmin = () => {
     const [lessons, setLessons] = useState([]);
     const [searchTeacher, setSearchTeacher] = useState("");
     const [searchStudent, setSearchStudent] = useState("");
-    const [searchDate, setSearchDate] = useState("");
+    const getCurrentMonth = () => {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = (today.getMonth() + 1).toString().padStart(2, '0'); // months are 0-indexed
+        return `${year}-${month}`;
+    };
+
+    const [searchDate, setSearchDate] = useState(getCurrentMonth());
     const [currentPage, setCurrentPage] = useState(1);
     const rowsPerPage = 20;
     const navigate = useNavigate();
@@ -58,6 +67,22 @@ const ApprovedIndividualLessonsAdmin = () => {
         localStorage.clear();
         navigate("/login");
     };
+    const handleDelete = async (lessonId) => {
+
+        try {
+            console.log("🔍 Deleting lesson with ID:", lessonId);
+            const token = localStorage.getItem("access_token");
+            await axios.delete(`https://maram-classmanager-backend.onrender.com/admin/admin/delete-lesson/${lessonId}?token=${token}`);
+
+            alert("تم حذف الدرس بنجاح!");
+            setLessons((prevLessons) =>
+                prevLessons.filter((lesson) => lesson._id !== lessonId)
+            );
+        } catch (error) {
+            console.error("❌ فشل في حذف الدرس:", error);
+            alert("حدث خطأ أثناء حذف الدرس. حاول مرة أخرى.");
+        }
+    };
 
     const fetchApprovedLessons = async (token) => {
         try {
@@ -72,7 +97,7 @@ const ApprovedIndividualLessonsAdmin = () => {
     const filteredLessons = lessons.filter((lesson) =>
         lesson.teacher_name.toLowerCase().includes(searchTeacher.toLowerCase()) &&
         lesson.student_name.toLowerCase().includes(searchStudent.toLowerCase()) &&
-        lesson.date.includes(searchDate)
+        lesson.date.startsWith(searchDate)
     );
 
     const indexOfLastRow = currentPage * rowsPerPage;
@@ -108,12 +133,13 @@ const ApprovedIndividualLessonsAdmin = () => {
                     className="search-input"
                 />
                 <input
-                    type="date"
-                    placeholder="بحث بالتاريخ"
+                    type="month"
+                    placeholder="بحث بالشهر"
                     value={searchDate}
                     onChange={(e) => setSearchDate(e.target.value)}
                     className="search-input"
                 />
+
             </div>
 
             <div className="table-wrapper">
@@ -126,6 +152,8 @@ const ApprovedIndividualLessonsAdmin = () => {
                             <th>المستوى التعليمي</th>
                             <th>المادة</th>
                             <th>التاريخ</th>
+                            <th>الإجراءات</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -137,6 +165,15 @@ const ApprovedIndividualLessonsAdmin = () => {
                                 <td>{lesson.education_level}</td>
                                 <td>{lesson.subject}</td>
                                 <td>{lesson.date}</td>
+                                <td>
+                                    <button
+                                        className="action-button delete-button"
+                                        onClick={() => handleDelete(lesson._id)}
+                                    >
+                                        حذف
+                                    </button>
+                                </td>
+
                             </tr>
                         ))}
                     </tbody>

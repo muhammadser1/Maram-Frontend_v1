@@ -1,5 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import App2 from "./Components/App2";
+
+import StudentPaymentForm from "./Components/StudentPaymentForm";
 
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
@@ -28,6 +31,8 @@ function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/App2" element={<App2 />} />
+
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutInstitute />} />
         <Route path="/ContactUs" element={<ContactUs />} />
@@ -51,6 +56,7 @@ function App() {
         <Route path="/PendingGroupLessonsAdmin" element={<PendingGroupLessonsAdmin />} />
         <Route path="/ApprovedGroupLessonsAdmin" element={<ApprovedGroupLessonsAdmin />} />
         <Route path="/SystemOverview" element={<SystemOverview />} />
+        <Route path="/StudentPaymentForm" element={<StudentPaymentForm />} />
 
       </Routes>
     </Router>

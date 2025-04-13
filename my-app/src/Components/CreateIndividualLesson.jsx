@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import '../styles/CreateIndividualLesson.css';
+import StudentNameList from './StudentNameList';
 
 export default function CreateIndividualLesson() {
     const navigate = useNavigate();
@@ -119,7 +120,15 @@ export default function CreateIndividualLesson() {
                 <input type="text" name="teacher_name" value={formData.teacher_name} readOnly />
 
                 <label>اسم الطالب:</label>
-                <input type="text" name="student_name" value={formData.student_name} onChange={handleChange} required />
+                <input
+                    type="text"
+                    name="student_name"
+                    list="studentNameList" // ربط الـ datalist
+                    value={formData.student_name}
+                    onChange={handleChange}
+                    required
+                />
+                <StudentNameList />
 
                 <label>عدد الساعات:</label>
                 <select name="hours" value={formData.hours} onChange={handleChange} required>

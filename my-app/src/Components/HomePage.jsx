@@ -48,14 +48,7 @@ const Homepage = () => {
                 </div>
             </header>
             <div className="homepage-yellow-line"></div>
-            <section className="homepage-eid">
-                <img
-                    src="../images/eid_text.png"
-                    alt="عيدكم مبارك"
-                    className="eid-text"
-                />
 
-            </section>
             {/* Hero Section */}
             <section className="homepage-hero">
                 <div className="homepage-hero-container">

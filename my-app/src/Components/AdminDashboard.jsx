@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { jwtDecode } from 'jwt-decode';
 import { FaChalkboardTeacher, FaUsers, FaClock, FaCheckCircle, FaSchool, FaHourglassHalf } from 'react-icons/fa';
 import "../styles/AdminDashboard.css";
+import { FaMoneyBill } from 'react-icons/fa'; // or any icon you like
 
 function AdminDashboard() {
     const navigate = useNavigate();
@@ -125,6 +126,13 @@ function AdminDashboard() {
                         icon={<FaChalkboardTeacher />}
                         onClick={() => handleActionClick(() => navigate('/SystemOverview'))}
                     />
+
+                    <SidebarButton
+                        title="دفعات الطلاب"
+                        icon={<FaMoneyBill />}
+                        onClick={() => handleActionClick(() => navigate('/StudentPaymentForm'))}
+                    />
+
                 </aside>
 
                 <main className="admin-dashboard-main">

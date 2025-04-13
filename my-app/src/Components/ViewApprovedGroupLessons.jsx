@@ -11,6 +11,12 @@ const ViewApprovedGroupLessons = () => {
     const rowsPerPage = 15;
     const navigate = useNavigate();
 
+    // ✅ Set default month to current month
+    useEffect(() => {
+        const currentMonth = new Date().toISOString().slice(0, 7); // Get current month in "YYYY-MM" format
+        setSearchDate(currentMonth); // Set the default month
+    }, []);
+
     // ✅ Fetch Approved Group Lessons from Backend
     useEffect(() => {
         const fetchApprovedLessons = async () => {
@@ -36,10 +42,10 @@ const ViewApprovedGroupLessons = () => {
         fetchApprovedLessons();
     }, [navigate]);
 
-    // ✅ Filtering Logic (Search by Student Name & Date)
+    // ✅ Filtering Logic (Search by Student Name & Month)
     const filteredLessons = approvedLessons.filter((lesson) =>
         lesson.student_names.some(name => name.toLowerCase().includes(searchTerm.toLowerCase())) &&
-        (searchDate === "" || lesson.date.startsWith(searchDate))
+        (searchDate === "" || lesson.date.slice(0, 7) === searchDate) // Compare only the year and month (YYYY-MM)
     );
 
     // ✅ Pagination Logic
@@ -65,8 +71,7 @@ const ViewApprovedGroupLessons = () => {
                     className="search-input"
                 />
                 <input
-                    type="date"
-                    placeholder="بحث بالتاريخ"
+                    type="month" // This allows the user to select a month and year
                     value={searchDate}
                     onChange={(e) => setSearchDate(e.target.value)}
                     className="search-input"
