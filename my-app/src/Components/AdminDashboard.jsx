@@ -5,6 +5,7 @@ import { jwtDecode } from 'jwt-decode';
 import { FaChalkboardTeacher, FaUsers, FaClock, FaCheckCircle, FaSchool, FaHourglassHalf } from 'react-icons/fa';
 import "../styles/AdminDashboard.css";
 import { FaMoneyBill } from 'react-icons/fa'; // or any icon you like
+import { FaFileExcel } from 'react-icons/fa';
 
 function AdminDashboard() {
     const navigate = useNavigate();
@@ -132,7 +133,11 @@ function AdminDashboard() {
                         icon={<FaMoneyBill />}
                         onClick={() => handleActionClick(() => navigate('/StudentPaymentForm'))}
                     />
-
+                    <SidebarButton
+                        title="Excel تصدير إلى "
+                        icon={<FaFileExcel />} // تأكد أنك قمت باستيراد هذا الأيقونة من react-icons/fa
+                        onClick={() => handleActionClick(() => navigate('/App2'))}
+                    />
                 </aside>
 
                 <main className="admin-dashboard-main">
