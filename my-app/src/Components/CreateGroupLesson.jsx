@@ -74,6 +74,7 @@ const CreateGroupLesson = () => {
 
     // ✅ Arabic Hour Options (Map Text → Float)
     const hourOptions = {
+        "نصف ساعة": 0.5,
         "ساعة": 1,
         "ساعة وربع": 1.25,
         "ساعة ونصف": 1.5,
