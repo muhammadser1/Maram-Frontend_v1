@@ -138,6 +138,11 @@ function AdminDashboard() {
                         icon={<FaFileExcel />} // تأكد أنك قمت باستيراد هذا الأيقونة من react-icons/fa
                         onClick={() => handleActionClick(() => navigate('/App2'))}
                     />
+                    <SidebarButton
+                        title="حجوزات الطلاب"
+                        icon={<FaChalkboardTeacher />}
+                        onClick={() => handleActionClick(() => navigate('/Admin_Booking'))}
+                    />
                 </aside>
 
                 <main className="admin-dashboard-main">

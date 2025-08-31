@@ -1,0 +1,123 @@
+/* ====== Reset base ====== */
+body {
+    background: #f8fafc;
+    font-family: 'Tajawal', sans-serif;
+    line-height: 1.6;
+}
+
+/* ====== Container Card ====== */
+.form-container {
+    max-width: 600px;
+    margin: 60px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .12);
+    overflow: hidden;
+    direction: rtl;
+}
+
+/* Header */
+.form-container>h2 {
+    margin: 0;
+    padding: 20px;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.form-container>p {
+    margin: 0;
+    padding: 10px 20px;
+    text-align: center;
+    color: #475569;
+    font-weight: 500;
+    background: #f9fafb;
+}
+
+/* ====== Form ====== */
+.booking-form {
+    padding: 24px;
+    display: grid;
+    gap: 18px;
+}
+
+/* Group wrapper */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Labels */
+.form-group label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+/* Inputs / selects / textarea */
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+    padding: 12px 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #0f172a;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+}
+
+/* Textarea */
+.booking-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* ====== Rows (2 columns on desktop) ====== */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+@media (max-width: 640px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ====== Submit Button ====== */
+.submit-btn {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.05s;
+}
+
+.submit-btn:hover {
+    filter: brightness(1.05);
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
