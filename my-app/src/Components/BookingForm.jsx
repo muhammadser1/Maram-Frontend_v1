@@ -212,12 +212,36 @@ export default function BookingForm() {
 
                     <div className="form-group">
                         <label>المرحلة الدراسية</label>
-                        <select name="ageLevel" value={formData.ageLevel} onChange={handleChange} required>
-                            <option value="">اختر المرحلة</option>
-                            <option value="ابتدائي">ابتدائي</option>
-                            <option value="إعدادي">إعدادي</option>
-                            <option value="ثانوي">ثانوي</option>
-                        </select>
+<select
+  name="ageLevel"
+  value={formData.ageLevel}
+  onChange={handleChange}
+  required
+>
+  <option value="">اختر الصف</option>
+
+  <optgroup label="المرحلة الابتدائية">
+    <option value="الصف الأول">الصف الأول</option>
+    <option value="الصف الثاني">الصف الثاني</option>
+    <option value="الصف الثالث">الصف الثالث</option>
+    <option value="الصف الرابع">الصف الرابع</option>
+    <option value="الصف الخامس">الصف الخامس</option>
+    <option value="الصف السادس">الصف السادس</option>
+  </optgroup>
+
+  <optgroup label="المرحلة الإعدادية">
+    <option value="الصف السابع">الصف السابع</option>
+    <option value="الصف الثامن">الصف الثامن</option>
+    <option value="الصف التاسع">الصف التاسع</option>
+  </optgroup>
+
+  <optgroup label="المرحلة الثانوية">
+    <option value="الصف العاشر">الصف العاشر</option>
+    <option value="الصف الحادي عشر">الصف الحادي عشر</option>
+    <option value="الصف الثاني عشر">الصف الثاني عشر</option>
+  </optgroup>
+</select>
+
                     </div>
                 </div>
 
