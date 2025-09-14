@@ -24,6 +24,7 @@
 .bs-sub {
     color: #334155;
     margin-top: 6px;
+    font-size: 1rem;
 }
 
 .bs-details {
@@ -35,6 +36,7 @@
     padding: 14px;
     border-radius: 12px;
     color: #0f172a;
+    font-size: 0.95rem;
 }
 
 .bs-details span {
@@ -48,6 +50,7 @@
     gap: 10px;
     justify-content: center;
     margin-top: 16px;
+    flex-wrap: wrap;
 }
 
 .btn {
@@ -56,6 +59,8 @@
     border-radius: 12px;
     cursor: pointer;
     font-weight: 700;
+    font-size: 0.95rem;
+    min-width: 120px;
 }
 
 .bs-primary {
@@ -71,4 +76,37 @@
 .bs-help {
     margin-top: 12px;
     color: #475569;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* 📱 Mobile styles */
+@media (max-width: 600px) {
+    .bs-card {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .bs-icon {
+        font-size: 36px;
+    }
+
+    .bs-sub {
+        font-size: 0.95rem;
+    }
+
+    .bs-details {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .bs-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
 }
