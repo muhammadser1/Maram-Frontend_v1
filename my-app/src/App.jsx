@@ -29,7 +29,7 @@ import ApprovedGroupLessonsAdmin from "./Components/ApprovedGroupLessonsAdmin";
 import SystemOverview from "./Components/SystemOverview";
 import BookingForm from "./Components/BookingForm";
 import Admin_Booking from "./Components/Admin_Booking";
-
+import BookingSuccess from "./Components/BookingSuccess";
 function App() {
   return (
     <Router>
@@ -62,6 +62,8 @@ function App() {
         <Route path="/StudentPaymentForm" element={<StudentPaymentForm />} />
         <Route path="/BookingForm" element={<BookingForm />} />
         <Route path="/Admin_Booking" element={<Admin_Booking />} />
+        <Route path="/BookingSuccess" element={<BookingSuccess />} />
+
       </Routes>
     </Router>
   );

@@ -1,13 +1,18 @@
+// BookingForm.jsx
 import React, { useMemo, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../styles/BookingForm.css";
 
-// Use .env if available, fallback to localhost
-const API_URL = "https://maram-classmanager-backend.onrender.com";
+// Auto-switch API: localhost in dev, Render in prod
+const API_URL =
+    window.location.hostname === "localhost"
+        ? "http://localhost:8000"
+        : "https://maram-classmanager-backend.onrender.com";
 
 /* ---------- time & hours helpers ---------- */
-const TIME_START_HOUR = 10;   // 08:00
-const TIME_END_HOUR = 22;    // 22:00 (inclusive)
+const TIME_START_HOUR = 10;   // 10:00
+const TIME_END_HOUR = 22;   // 22:00 (inclusive)
 
 const buildTimeSlots = (startH, endH) => {
     const out = [];
@@ -31,22 +36,24 @@ const HOURS_OPTIONS = [
 ];
 
 export default function BookingForm() {
+    const navigate = useNavigate();
     const today = useMemo(() => new Date().toISOString().split("T")[0], []);
     const [loading, setLoading] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("");
 
-    // UI model (frontend-only fields: studentName for individual, students[] for group)
+    // UI model
     const [formData, setFormData] = useState({
         parentName: "",
         phone: "",
         subject: "",
         ageLevel: "",
-        lessonDate: today,   // YYYY-MM-DD
-        lessonTime: "",      // "HH:MM"
-        hours: "",           // string in UI, will convert to number
+        lessonDate: today,
+        lessonTime: "",
+        hours: "",
         notes: "",
         lessonType: "individual", // "individual" | "group"
-        studentName: "",           // for individual (we map -> students: [studentName])
-        students: ["", ""],        // for group; ensure at least 2
+        studentName: "",          // for individual
+        students: ["", ""],       // for group; ensure at least 2
     });
 
     const isGroup = formData.lessonType === "group";
@@ -56,7 +63,6 @@ export default function BookingForm() {
         const { name, value } = e.target;
 
         if (name === "lessonType") {
-            // switching type resets the appropriate student inputs
             setFormData((p) => ({
                 ...p,
                 lessonType: value,
@@ -65,66 +71,61 @@ export default function BookingForm() {
             }));
             return;
         }
-
         setFormData((p) => ({ ...p, [name]: value }));
     };
 
     // group students handlers
-    const addStudent = () => {
-        setFormData((p) => ({ ...p, students: [...(p.students || []), ""] }));
-    };
-    const removeStudent = (idx) => {
+    const addStudent = () => setFormData((p) => ({ ...p, students: [...(p.students || []), ""] }));
+    const removeStudent = (idx) =>
         setFormData((p) => {
             const next = [...p.students];
             next.splice(idx, 1);
             return { ...p, students: next };
         });
-    };
-    const changeStudent = (idx, value) => {
+    const changeStudent = (idx, value) =>
         setFormData((p) => {
             const next = [...(p.students || [])];
             next[idx] = value;
             return { ...p, students: next };
         });
-    };
 
     // -------- submit --------
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrorMsg("");
 
-        // basic validations
-        if (!formData.phone) return alert("⚠️ أدخل رقم الهاتف.");
-        if (!formData.subject) return alert("⚠️ اختر المادة.");
-        if (!formData.ageLevel) return alert("⚠️ اختر المرحلة الدراسية.");
-        if (!formData.lessonDate) return alert("⚠️ اختر تاريخ الدرس.");
-        if (!formData.lessonTime) return alert("⚠️ اختر وقت الدرس.");
-        if (!formData.hours) return alert("⚠️ اختر عدد الساعات.");
+        // basic validations (inline)
+        if (!formData.phone) return setErrorMsg("⚠️ أدخل رقم الهاتف.");
+        if (!formData.subject) return setErrorMsg("⚠️ اختر المادة.");
+        if (!formData.ageLevel) return setErrorMsg("⚠️ اختر المرحلة الدراسية.");
+        if (!formData.lessonDate) return setErrorMsg("⚠️ اختر تاريخ الدرس.");
+        if (!formData.lessonTime) return setErrorMsg("⚠️ اختر وقت الدرس.");
+        if (!formData.hours) return setErrorMsg("⚠️ اختر عدد الساعات.");
 
-        // students validation + mapping to backend model
+        // students validation + mapping
         let students = [];
         if (isGroup) {
             const cleaned = (formData.students || []).map((s) => s.trim()).filter(Boolean);
-            if (cleaned.length < 2) return alert("⚠️ للدرس الجماعي، يجب إدخال اسمين على الأقل.");
+            if (cleaned.length < 2) return setErrorMsg("⚠️ للدرس الجماعي، يجب إدخال اسمين على الأقل.");
             students = cleaned;
         } else {
             const name = (formData.studentName || "").trim();
-            if (!name) return alert("⚠️ أدخل اسم الطالب.");
+            if (!name) return setErrorMsg("⚠️ أدخل اسم الطالب.");
             students = [name];
         }
 
-        // payload that matches backend Booking model
+        // payload for backend
         const payload = {
-            parentName: formData.parentName || undefined, // optional
+            parentName: formData.parentName || undefined,
             phone: formData.phone,
             subject: formData.subject,
             ageLevel: formData.ageLevel,
             lessonDate: formData.lessonDate,
             lessonTime: formData.lessonTime,
-            hours: Number(formData.hours), // backend expects float
+            hours: Number(formData.hours),
             notes: formData.notes || undefined,
-            lessonType: formData.lessonType, // "individual" | "group"
-            students,                        // List[str]
-            // status is defaulted by backend to "pending"; no need to send
+            lessonType: formData.lessonType,
+            students,
         };
 
         try {
@@ -133,12 +134,14 @@ export default function BookingForm() {
                 headers: { "Content-Type": "application/json" },
             });
 
-            // nice confirmation + refresh
-            alert("🎉 شكراً لحجزك. ستتواصل إدارة المعهد معك قريباً لتأكيد الحجز أو الاعتذار عنه.");
-            window.location.reload();
+            // persist once so refresh on success page still shows details
+            sessionStorage.setItem("lastBooking", JSON.stringify(payload));
+
+            // navigate to your requested path: /BookingSuccess (capital B)
+            navigate("/BookingSuccess", { state: { booking: payload } });
         } catch (err) {
             console.error(err);
-            alert("❌ تعذّر إرسال الطلب. حاول مرة أخرى لاحقاً.");
+            setErrorMsg("❌ تعذّر إرسال الطلب. حاول مرة أخرى لاحقاً.");
         } finally {
             setLoading(false);
         }
@@ -148,6 +151,13 @@ export default function BookingForm() {
         <div className="form-container" dir="rtl">
             <h2>📚 حجز درس</h2>
             <p>املأ البيانات التالية لإتمام عملية الحجز</p>
+
+            {/* inline error (no alert) */}
+            {errorMsg && (
+                <div className="bf-alert error" role="alert">
+                    {errorMsg}
+                </div>
+            )}
 
             <form onSubmit={handleSubmit} className="booking-form">
                 {/* Parent & phone */}

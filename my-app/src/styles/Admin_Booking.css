@@ -380,3 +380,57 @@
         width: 36ch;
     }
 }
+
+
+
+
+
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: #fff;
+    width: min(800px, 95vw);
+    max-height: 90vh;
+    overflow: auto;
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 10px 14px;
+    margin-top: 10px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+.btn-secondary {
+    background: #b37f7f;
+    color: #333;
+}
+
+.btn-secondary2 {
+    background: #b37f7f;
+    color: #333;
+}
+
+.b-edit {
+    background: #4c8bf5;
+    color: #ffffff;
+}

@@ -4,7 +4,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/Admin_Booking.css";
 
-const API_BASE = "https://maram-classmanager-backend.onrender.com";
+// Auto-switch API base: localhost in dev, Render in prod
+const API_BASE =
+    window.location.hostname === "localhost"
+        ? "http://localhost:8000"
+        : "https://maram-classmanager-backend.onrender.com";
 
 const STATUS_LABELS_AR = {
     pending: "قيد الانتظار",
@@ -29,9 +33,29 @@ export default function Admin_Booking() {
     const [statusFilter, setStatusFilter] = useState("all");
     const [typeFilter, setTypeFilter] = useState("all");
 
+    // sort: none | subject
+    const [sortMode, setSortMode] = useState("none");
+
     const [page, setPage] = useState(1);
 
-    // ---------- fetch by DAY (with query token) ----------
+    // ---------- edit modal state ----------
+    const emptyEdit = {
+        _id: "",
+        parentName: "",
+        phone: "",
+        subject: "",
+        ageLevel: "",
+        lessonDate: "",
+        lessonTime: "",
+        hours: "",
+        lessonType: "individual",
+        studentsText: "",
+        notes: "",
+    };
+    const [isEditOpen, setIsEditOpen] = useState(false);
+    const [editForm, setEditForm] = useState(emptyEdit);
+
+    // ---------- fetch by DAY ----------
     async function fetchDay() {
         const token = localStorage.getItem("access_token");
         if (!token) {
@@ -74,7 +98,7 @@ export default function Admin_Booking() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [mode, selectedDate]);
 
-    // ---------- filter + paginate ----------
+    // ---------- filter + (optional) sort + paginate ----------
     const filtered = useMemo(() => {
         return (items || []).filter((it) => {
             const statusMatch =
@@ -85,18 +109,30 @@ export default function Admin_Booking() {
         });
     }, [items, statusFilter, typeFilter]);
 
-    const totalPages = Math.max(1, Math.ceil(filtered.length / ROWS_PER_PAGE));
+    const arabicSubjectCompare = (a, b) =>
+        (a.subject || "").localeCompare(b.subject || "", "ar", {
+            sensitivity: "base",
+        });
+
+    const sortedFiltered = useMemo(() => {
+        if (sortMode === "subject") {
+            return [...filtered].sort(arabicSubjectCompare);
+        }
+        return filtered;
+    }, [filtered, sortMode]);
+
+    const totalPages = Math.max(1, Math.ceil(sortedFiltered.length / ROWS_PER_PAGE));
     const pageSafe = Math.min(page, totalPages);
-    const pageRows = filtered.slice(
+    const pageRows = sortedFiltered.slice(
         (pageSafe - 1) * ROWS_PER_PAGE,
         pageSafe * ROWS_PER_PAGE
     );
 
     useEffect(() => {
         setPage(1);
-    }, [statusFilter, typeFilter, mode, selectedDate]);
+    }, [statusFilter, typeFilter, sortMode, mode, selectedDate]);
 
-    // ---------- actions (optimistic) ----------
+    // ---------- actions (status) ----------
     async function changeStatus(id, newStatus) {
         const token = localStorage.getItem("access_token");
         if (!id || !token) return;
@@ -120,7 +156,101 @@ export default function Admin_Booking() {
         }
     }
 
-    // ---------- helpers ----------
+    // ---------- edit helpers ----------
+    const parseStudents = (txt) =>
+        (txt || "")
+            .split(/,|،/g)
+            .map((s) => s.trim())
+            .filter(Boolean);
+
+    function openEdit(row) {
+        setEditForm({
+            _id: row._id,
+            parentName: row.parentName || "",
+            phone: row.phone || "",
+            subject: row.subject || "",
+            ageLevel: row.ageLevel || row.education_level || "",
+            lessonDate: row.lessonDate || "",
+            lessonTime: row.lessonTime || "",
+            hours: row.hours ?? "",
+            lessonType: row.lessonType || "individual",
+            studentsText: Array.isArray(row.students) ? row.students.join(", ") : "",
+            notes: row.notes || "",
+        });
+        setIsEditOpen(true);
+    }
+
+    function closeEdit() {
+        setIsEditOpen(false);
+        setEditForm(emptyEdit);
+    }
+
+    function onEditChange(e) {
+        const { name, value } = e.target;
+        setEditForm((f) => ({ ...f, [name]: value }));
+    }
+
+    async function saveEdit() {
+        const token = localStorage.getItem("access_token");
+        if (!token) {
+            alert("يرجى تسجيل الدخول أولاً.");
+            navigate("/login");
+            return;
+        }
+        const id = editForm._id;
+        if (!id) return;
+
+        // Build PATCH payload with only provided fields
+        const payload = {
+            parentName: editForm.parentName,
+            phone: editForm.phone,
+            subject: editForm.subject,
+            ageLevel: editForm.ageLevel,
+            lessonDate: editForm.lessonDate,
+            lessonTime: editForm.lessonTime,
+            notes: editForm.notes,
+            lessonType: editForm.lessonType,
+        };
+
+        // hours as number (optional)
+        if (
+            editForm.hours !== "" &&
+            editForm.hours !== null &&
+            editForm.hours !== undefined
+        ) {
+            payload.hours = Number(editForm.hours);
+        }
+
+        // students array from text
+        const studentsArr = parseStudents(editForm.studentsText);
+        if (studentsArr.length) payload.students = studentsArr;
+
+        // Optimistic UI update clone
+        const prev = items.slice();
+        const next = items.map((x) =>
+            String(x._id) === String(id)
+                ? {
+                    ...x,
+                    ...payload,
+                    students: payload.students ?? x.students,
+                }
+                : x
+        );
+        setItems(next);
+
+        try {
+            await axios.patch(`${API_BASE}/booking/${id}`, payload, {
+                params: { token },
+            });
+            closeEdit();
+        } catch (e) {
+            console.error(e);
+            alert("فشل حفظ التعديلات. تم التراجع.");
+            setItems(prev);
+        }
+    }
+
+    // ---------- UI ----------
     const statusChipClass = (status) => `status-chip ${status || "pending"}`;
     const typeChipClass = (t) =>
         `type-chip ${t === "group" ? "group" : "individual"}`;
@@ -190,8 +320,20 @@ export default function Admin_Booking() {
                     </select>
                 </div>
 
+                {/* new: sort control */}
+                <div className="field">
+                    <label>الترتيب</label>
+                    <select
+                        value={sortMode}
+                        onChange={(e) => setSortMode(e.target.value)}
+                    >
+                        <option value="none">بدون</option>
+                        <option value="subject">حسب المادة (أ-ي)</option>
+                    </select>
+                </div>
+
                 <div className="count-badge" title="عدد النتائج">
-                    {filtered.length}
+                    {sortedFiltered.length}
                 </div>
             </div>
 
@@ -219,9 +361,10 @@ export default function Admin_Booking() {
                         </thead>
                         <tbody>
                             {pageRows.map((row) => {
-                                const students = Array.isArray(row.students) && row.students.length
-                                    ? row.students.join("، ")
-                                    : `${row.firstName || ""} ${row.lastName || ""}`.trim();
+                                const students =
+                                    Array.isArray(row.students) && row.students.length
+                                        ? row.students.join("، ")
+                                        : `${row.firstName || ""} ${row.lastName || ""}`.trim();
 
                                 return (
                                     <tr key={row._id}>
@@ -233,7 +376,9 @@ export default function Admin_Booking() {
                                         <td>{row.lessonDate || "—"}</td>
                                         <td>{row.lessonTime || "—"}</td>
                                         <td>
-                                            <span className={typeChipClass(row.lessonType || "individual")}>
+                                            <span
+                                                className={typeChipClass(row.lessonType || "individual")}
+                                            >
                                                 {TYPE_LABELS_AR[row.lessonType || "individual"]}
                                             </span>
                                         </td>
@@ -263,6 +408,13 @@ export default function Admin_Booking() {
                                                 disabled={row.status === "completed"}
                                             >
                                                 إنهاء
+                                            </button>
+                                            <button
+                                                className="btn b-edit"
+                                                onClick={() => openEdit(row)}
+                                                title="تعديل"
+                                            >
+                                                تعديل
                                             </button>
                                         </td>
                                     </tr>
@@ -298,6 +450,104 @@ export default function Admin_Booking() {
                     العودة إلى لوحة التحكم
                 </button>
             </div>
+
+            {/* ------ Edit Modal ------ */}
+            {isEditOpen && (
+                <div className="modal-overlay" onClick={closeEdit}>
+                    <div className="modal" onClick={(e) => e.stopPropagation()}>
+                        <h2>تعديل الدرس</h2>
+
+                        <div className="form-grid">
+                            <label>اسم ولي الأمر</label>
+                            <input
+                                name="parentName"
+                                value={editForm.parentName}
+                                onChange={onEditChange}
+                            />
+
+                            <label>الهاتف</label>
+                            <input
+                                name="phone"
+                                value={editForm.phone}
+                                onChange={onEditChange}
+                            />
+
+                            <label>المادة</label>
+                            <input
+                                name="subject"
+                                value={editForm.subject}
+                                onChange={onEditChange}
+                            />
+
+                            <label>المستوى</label>
+                            <input
+                                name="ageLevel"
+                                value={editForm.ageLevel}
+                                onChange={onEditChange}
+                            />
+
+                            <label>تاريخ الدرس</label>
+                            <input
+                                type="date"
+                                name="lessonDate"
+                                value={editForm.lessonDate}
+                                onChange={onEditChange}
+                            />
+
+                            <label>وقت الدرس</label>
+                            <input
+                                type="time"
+                                name="lessonTime"
+                                value={editForm.lessonTime}
+                                onChange={onEditChange}
+                            />
+
+                            <label>عدد الساعات</label>
+                            <input
+                                type="number"
+                                step="0.1"
+                                name="hours"
+                                value={editForm.hours}
+                                onChange={onEditChange}
+                            />
+
+                            <label>النوع</label>
+                            <select
+                                name="lessonType"
+                                value={editForm.lessonType}
+                                onChange={onEditChange}
+                            >
+                                <option value="individual">فردي</option>
+                                <option value="group">جماعي</option>
+                            </select>
+
+                            <label>الطلاب (افصل بـ , أو ،)</label>
+                            <input
+                                name="studentsText"
+                                placeholder="Ali, Laila أو Ali، Laila"
+                                value={editForm.studentsText}
+                                onChange={onEditChange}
+                            />
+
+                            <label>ملاحظات</label>
+                            <textarea
+                                name="notes"
+                                value={editForm.notes}
+                                onChange={onEditChange}
+                            />
+                        </div>
+
+                        <div className="modal-actions">
+                            <button className="btn btn-secondary2" onClick={saveEdit}>
+                                حفظ
+                            </button>
+                            <button className="btn btn-secondary" onClick={closeEdit}>
+                                إلغاء
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
